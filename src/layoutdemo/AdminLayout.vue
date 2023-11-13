@@ -2,7 +2,7 @@
 import { Layout } from 'ant-design-vue';
 import { Div, SmallScreenSearch, SmallScreenAuthInfo, TopMenuSearch } from './style';
 import HeaderSearch from '../components/header-search/HeaderSearch.vue';
-import AuthInfo from '../components/utilities/auth-info/Info.vue';
+import AuthInfo from '../components/utilities/auth-info/InfoCopy.vue';
 import AsideItems from './Aside.vue';
 import TopMenu from './TopMenuItems.vue';
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar';

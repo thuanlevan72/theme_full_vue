@@ -678,7 +678,7 @@ const menus = [
         link: '/marketing-tools/mau-tin-nhan',
       },
       {
-        icon: 'face-smile ',
+        icon: 'user-graduate',
         title: language.navBar.marketingTools.sub.studentInterested,
         show: checkRoles(['Admin', 'Marketing']),
         link: '/marketing-tools/hoc-vien-quan-tam',
@@ -741,24 +741,26 @@ watch(
             :style="{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }"
           />
         </template>
-        <router-link :to="menu.link">{{ menu.title }}</router-link>
+        <router-link class="large-text" :to="menu.link">{{ menu.title }}</router-link>
       </a-menu-item>
       <a-sub-menu :key="menu?.title" v-else-if="menu.show">
         <template #icon>
           <font-awesome-icon
             class="super-crazy-colors"
             :icon="menu.icon"
-            size="1x"
+            size="2x"
             :style="{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }"
           />
         </template>
-        <template #title>{{ menu.title }}</template>
+        <template style="font-size: 1rem !important" #title>
+          <span class="large-text">{{ menu.title }}</span></template
+        >
         <a-menu-item @click="toggleCollapsed" :key="submenu.title" v-for="submenu in menu?.items">
-          <router-link :to="submenu.link">
+          <router-link :to="submenu.link" class="large-text">
             <font-awesome-icon
               class="super-crazy-colors"
               :icon="submenu.icon"
-              size="1x"
+              size="2x"
               :style="{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }"
             />&ensp;{{ submenu.title }}
           </router-link>
@@ -767,3 +769,8 @@ watch(
     </template>
   </a-menu>
 </template>
+<style>
+.large-text {
+  font-size: 14px !important; /* Thay đổi giá trị này để điều chỉnh kích thước chữ */
+}
+</style>
