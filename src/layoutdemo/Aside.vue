@@ -526,7 +526,7 @@ const menus = [
     link: '/noidung',
     items: [
       {
-        icon: 'circle-info"',
+        icon: 'window-maximize',
         title: language.navBar.content.sub.information,
         show: checkRoles(['Admin']),
         link: '/noidung/thongtin',
