@@ -5,9 +5,7 @@ import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
 import versions from '../demoData/changelog.json';
 import { NavTitle } from './style';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-import {} from '@fortawesome/free-brands-svg-icons';
 const props = defineProps({
   toggleCollapsed: {
     type: Function,
@@ -24,7 +22,7 @@ const darkMode = computed(() => store.state.themeLayout.data);
 const mode = ref('inline');
 const { events } = toRefs(props);
 const { onRtlChange, onLtrChange, modeChangeDark, modeChangeLight, modeChangeTopNav, modeChangeSideNav } = events.value;
-const myRoles = ['Admin', 'TroGiang', 'HocVien'];
+
 const router = computed(() => useRoute());
 const state = reactive({
   rootSubmenuKeys: ['sub1', 'sub2', 'sub4'],
@@ -32,664 +30,11 @@ const state = reactive({
   openKeys: ['dashboard'],
   preOpenKeys: ['dashboard'],
 });
-const language = {
-  header: {
-    myAccount: 'Tài khoản của tôi',
-    signOut: 'Đăng xuất',
-    language: [
-      {
-        src: 'https://cdn-icons-png.flaticon.com/512/323/323319.png',
-        type: 'vi',
-        name: 'Tiếng Việt',
-      },
-      {
-        src: 'https://cdn-icons-png.flaticon.com/512/197/197374.png',
-        type: 'en',
-        name: 'Tiếng Anh',
-      },
-      {
-        src: 'https://cdn-icons-png.flaticon.com/512/552/552051.png',
-        type: 'kr',
-        name: 'Tiếng Hàn',
-      },
-      {
-        src: 'https://cdn-icons-png.flaticon.com/512/4852/4852821.png',
-        type: 'jp',
-        name: 'Tiếng Nhật',
-      },
-    ],
-  },
-  navBar: {
-    newFeed: 'Bảng tin',
-    userInfomation: 'Thông tin cá nhân',
-    student: {
-      title: 'Học viên',
-      sub: {
-        attandance: 'Điểm danh',
-        myCourse: 'Khóa học của tôi',
-        chatBot: 'AI hỗ trợ',
-        danhGia: 'Đánh giá của tôi',
-      },
-    },
-    mentor: {
-      title: 'Trợ giảng',
-      sub: {
-        myStudent: 'Học viên của tôi',
-        takeCare: 'Giám sát học tập',
-        studentAttendance: 'Điểm danh học viên',
-        assignStudent: 'Phân công học viên',
-      },
-    },
-    user: {
-      title: 'Người dùng',
-      sub: {
-        listStudent: 'Danh sách học viên',
-        listAccount: 'Danh sách tài khoản',
-      },
-    },
-    content: {
-      title: 'Nội dung',
-      sub: {
-        information: 'Thông tin',
-        subjects: 'Môn học',
-        courses: 'Khóa học',
-        video: 'Video bài giảng',
-      },
-    },
-    manage: {
-      title: 'Quản lý',
-      sub: {
-        assign: 'Phân công trợ giảng',
-        history: 'Lịch sử truy cập',
-        takeCareAttandance: 'Giám sát điểm danh',
-        studentAttandance: 'Điểm danh học viên',
-        center: 'Trung tâm',
-        commonManage: 'Quản lý chung',
-        chatBot: 'AI hỗ trợ',
-        chatBotFeedBack: 'Đánh giá AI hỗ trợ',
-      },
-    },
-    testOnline: {
-      title: 'Đánh giá',
-      sub: {
-        testLibrary: 'Thư viện đề thi',
-        check: 'Kiểm tra',
-        quizLibrary: 'Thư viện câu hỏi',
-        settingManage: 'Quản lý cài đặt',
-      },
-    },
-    job: {
-      title: 'Công việc',
-      sub: {
-        jobGroupManage: 'Quản lý nhóm việc',
-        setting: 'Cấu hình',
-        myJobGroup: 'Nhóm việc của tôi',
-      },
-    },
-    marketingTools: {
-      title: 'Công cụ Marketing',
-      sub: {
-        templateMessage: 'Mẫu tin nhắn',
-        studentInterested: 'Học viên quan tâm',
-      },
-    },
-  },
-  home: {
-    catalog: {
-      title: 'Danh mục',
-    },
-  },
-  caNhan: {
-    danhSachKhoaHocDaDangKy: {
-      myCourse: 'Khóa học của tôi',
-      registered: 'Đã đăng ký',
-      unregistered: 'Chưa đăng ký',
-      timeLine: 'Lộ trình ·',
-      subject: 'Môn học',
-      more: '(Xem thêm)',
-      getIn: 'Vào học',
-      notRegistered: 'Chưa đăng ký khóa học nào',
-      register: 'Đăng ký',
-      emptCourse: 'Không có khóa học nào',
-    },
-    diemDanh: {
-      attendanceHistory: 'Lịch sử điểm danh',
-      type: ['Đến đúng/Sớm', 'Đến trễ', 'Nghỉ'],
-      from: 'Từ ngày',
-      to: 'Đến ngày',
-      typeWatch: ['Sáng', 'Chiều', 'Tối'],
-      xinNghi: 'Xin nghỉ',
-      typeAttandance: ['Sớm ', 'Muộn '],
-      headerTitle: ['Ngày', 'Ca-Giờ', 'Trạng thái'],
-    },
-    modalDangKyKhoaHoc: {
-      title: 'Khóa học:',
-      goiHocPhi: 'Gói học phí',
-      description: 'Xem mô tả',
-      dangKy: 'Đăng ký',
-    },
-    modalShowAnhMinhHoa: {
-      title: 'Cho có anh minh họa',
-      chuaCo: 'Chưa có',
-    },
-    modalXemVideo: {
-      title: 'Xem video',
-    },
-    thongTinCaNhan: {
-      title: 'Thông tin cá nhân1',
-      thayAnhDaiDien: 'Click để thay ảnh đại diện',
-      label: 'Họ tên (*)',
-      label2: 'Họ tên',
-      ngaySinh: 'Ngày sinh',
-      ngaySinh2: 'Ngày sinh (*)',
-      sdt: 'Số điện thoại',
-      sdt2: 'Số điện thoại (*)',
-      dhcd: 'Trường CĐ/ĐH (*)',
-      truongDaiHoc: 'Trường đại học',
-      tenKhoa: 'Tên khoa',
-      namThu: 'Năm thứ',
-      email: 'Email',
-      diaChiEmail: 'Địa chỉ email',
-      linkFB: 'Link Facebook cá nhân',
-      tinhThanh: 'Tỉnh thành',
-      quanHuyen: 'Quận huyện',
-      phuongXa: 'Phường xã',
-      soNha: 'Số nhà',
-      where: 'Biết LTS Edu qua',
-      intro: 'Người giới thiệu',
-      introer: 'Tên người giới thiệu',
-      thoiGianDiHoc: 'Thời gian đi học (*)',
-      damBao: '(đảm bảo tối thiểu 4 ca/tuần):',
-      slot: 'Buổi',
-      sang: 'Sáng',
-      chieu: 'Chiều',
-      toi: 'Tối',
-      update: 'Cập nhật',
-      slot2: {
-        hai: 'Thứ 2',
-        ba: 'Thứ 3',
-        tu: 'Thứ 4',
-        nam: 'Thứ 5',
-        sau: 'Thứ 6',
-        bay: 'Thứ 7',
-        cn: 'Chủ nhật',
-      },
-      layThatBai: 'Lấy thông tin học viên thật bại!',
-      layThatBai2: 'Lấy thông tin lịch học thật bại!',
-      layThatBai3: 'Lấy dữ liệu thật bại!',
-      layThatBai4: 'Vui lòng điền thông tin người giới thiệu!',
-      layThatBai5: 'Cập nhật thông tin cá nhân thành công!',
-      layThatBai6: 'Cập nhật thông tin cá nhân thất bại!',
-      layThatBai7: 'Cần chọn ít nhất 3 ca học/tuần!',
-      layThatBai8: 'Vui lòng điền đủ thông tin!',
-      layThatBai9: 'Upload ảnh thất bại!',
-      layThatBai10: 'Upload ảnh thành công!',
-    },
-    tienTrinhHoc: {
-      intro: 'Giới thiệu',
-      koBiet: 'Không xác định',
-      batDau: 'Bắt đầu',
-      tiepTuc: 'Tiếp tục',
-      kxd: 'KXĐ',
-      timeOut: 'Đã hết thời gian giới hạn môn',
-      mucTieu: 'Mục tiêu',
-      conLai: 'Còn lại',
-      ngay: 'ngày',
-      daHetThoiGianGioiHan: 'Đã hết thời gian giới hạn',
-      gioiHanKo: 'Giới hạn không',
-      gioiHan: 'Giới hạn:',
-      ngay2: ' Ngày',
-      ko: 'Không',
-      phanTramHoanThanh: '% Hoàn thành',
-      chuaCoMonHoc: 'Chưa có môn học',
-      khoaHocCuaToi: 'Khóa học của tôi',
-      daCoLoi: 'Đã có lỗi xảy ra!',
-      hoanThanh: 'Hoàn thành',
-      koXacDinh: 'Không xác định',
-      layThongTinKhoaHocThatBai: 'Lấy thông tin khóa học thất bại!',
-    },
-    vaoHoc: {
-      clickDeXem: 'Click để xem',
-      taiXuong: 'Tải xuống',
-      batBuocLam: 'Bắt buộc làm',
-      koBatBuocLam: 'Không bắt buộc làm',
-      koTimThayBaiTap: 'Không tìm thấy bài tập',
-      uuTien: 'Ưu tiên',
-      tatCa: 'Tất cả',
-      tinhTrangLamBaiTap: 'Tình trạng làm bài tập',
-      dung: 'Đúng',
-      sai: 'Sai',
-      doi: 'Đợi',
-      chuaHoanThanh: 'Chưa hoàn thành',
-      phanHoc: 'Phần học',
-      khoaHocCuaToi: 'Khóa học của tôi',
-      layThatBai: 'Lấy thông tin đăng ký học thất bại!',
-      layThatBai2: 'Lấy thông tin khóa học thất bại!',
-      layThatBai3: 'Lấy thông tin môn học thất bại!',
-      layThatBai4: 'Lấy thông tin chi tiết môn học thất bại!',
-      layThatBai6: 'Không thể mở video!',
-      layThatBai7: 'Hiện tại chưa có video!',
-      tinhTrangLamBaiTap2: {
-        hoanThanh: 'Hoàn thành',
-        sai: 'Sai ',
-        doiReview: 'Đợi review',
-        lamBai: 'Làm bài',
-      },
-      doKho: {
-        de: 'Dễ',
-        trungBinh: 'Trung bình',
-        kho: 'Khó',
-        tongHop: 'Tổng hợp',
-        koXacDinh: 'Không xác định',
-      },
-    },
-  },
-  newsFeed: {
-    createPost: {
-      thoiGianDaHoc: 'Thời gian đã học',
-      soBuoiDaThamGia: 'Số buổi đã tham gia',
-      soBuoiNghi: 'Số buổi nghỉ',
-      baiTapDaLam: 'Số bài tập đã làm',
-      monHocHienTai: 'Môn học hiện tại',
-      holder: 'Bạn đang nghĩ gì thế?',
-      img: 'Hình ảnh',
-      react: 'Cảm xúc',
-    },
-    chatBotFeedBack: {
-      title: 'Quản lí đánh giá AI hỗ trợ',
-      searchPlaceholder: 'Tìm kiếm',
-      searchTitle: 'Nhấn enter để tìm kiếm',
-      filterItemAll: 'Tất cả',
-      headerItemStudent: 'Học viên',
-      headerItemQuestion: 'Câu hỏi',
-      headerItemAnswer: 'Câu trả lời',
-      headerItemRate: 'Đánh giá',
-      headerItemRateDate: 'Ngày đánh giá',
-      headerItemDescription: 'Mô tả',
-      btnTitleShowContent: 'Hiển thị',
-      titleShowLength: 'Hiển thị',
-    },
-    thongTinCaNhan: {
-      title: 'Thông tin',
-      subTitle1: 'Thông tin tài khoản',
-      subTitle2: 'Thông tin cá nhân',
-      subTitle3: 'Địa chỉ',
-      subTitle4: 'Mạng xã hội',
-      userName: 'Tên đăng nhập',
-      fullName: 'Họ tên',
-      updateAvatarBtn: 'Thay đổi ảnh',
-      addAvatarBtn: 'Thêm Avatar',
-      email: 'Email',
-      phoneNumber: 'Số điện thoại',
-      dateOfBirth: 'Ngày sinh',
-      city: 'Tỉnh thành',
-      school: 'Trường cao đẳng/Đại học',
-      district: 'Quận/Huyện',
-      specialized: 'Chuyên ngành',
-      commune: 'Xã',
-      studentsInSome: 'Năm thứ',
-      apartmentNumber: 'Số nhà',
-      knowAboutLotusThrough: 'Biết về Lotus qua',
-      referencePerson: 'Người giới thiệu',
-      referencePersonName: 'Tên người giới thiệu',
-      studyTime: 'Thời gian học (Tối thiểu 4 ca/tuần)',
-      session: 'Buổi',
-      morning: 'Sáng',
-      afternoon: 'Chiều',
-      evening: 'Tối',
-      monday: 'Thứ 2',
-      tuesday: 'Thứ 3',
-      wednesday: 'Thứ 4',
-      thursday: 'Thứ 5',
-      friday: 'Thứ 6',
-      saturday: 'Thứ 7',
-      sunday: 'Chủ nhật',
-      save: 'Lưu thay đổi',
-      breadcrumbsTextHome: 'Trang chủ',
-      breadcrumbsTextInformation: 'Thông tin',
-      retrievingStudentInformationFailed: 'Lấy thông tin học viên thất bại',
-      retrievingClassScheduleInformationFailed: 'Lấy thông tin lịch học thất bại',
-      retrieveDataFailed: 'Lấy dữ liệu thất bại',
-      pleaseFillInTheReferrerIsName: 'Vui lòng điền tên người giới thiệu',
-      updatedPersonalInformationSuccessfully: 'Cập nhật thông tin thành công',
-      updatingPersonalInformationFailed: 'Cập nhật thông tin thất bại',
-      needToChooseAtLeastThreeClassesPerWeek: 'Cần chọn ít nhất 3 ca học/tuần',
-      pleaseFillInAllInformation: 'Vui lòng điền đủ thông tin',
-      pleaseChooseAFileSmallerThanOneMB: 'Vui lòng chọn file nhỏ hơn 1MB',
-      imageUploadFailed: 'Tải ảnh lên thất bại',
-      theUploadedFileIsInvalid: 'File tải lên không hợp lệ',
-    },
-  },
-  quanLy: {
-    chatBotFeedBack: {
-      title: 'Quản lí đánh giá AI hỗ trợ',
-      searchPlaceholder: 'Tìm kiếm',
-      searchTitle: 'Nhấn enter để tìm kiếm',
-      filterItemAll: 'Tất cả',
-      headerItemStudent: 'Học viên',
-      headerItemQuestion: 'Câu hỏi',
-      headerItemAnswer: 'Câu trả lời',
-      headerItemRate: 'Đánh giá',
-      headerItemRateDate: 'Ngày đánh giá',
-      headerItemDescription: 'Mô tả',
-      btnTitleShowContent: 'Hiển thị',
-      titleShowLength: 'Hiển thị',
-    },
-    chatBotMa: {
-      title: 'Quản lí AI hỗ trợ',
-      searchPlaceholder: 'Tìm kiếm',
-      searchTitle: 'Nhấn enter để tìm kiếm',
-      filterItemAll: 'Tất cả',
-      column1: 'Thao tác',
-      column2: 'Mã chatBot',
-      column3: 'Học viên',
-      column4: 'Ngày tạo',
-      column5: 'Số lượt đã dùng',
-      column6: 'Trạng thái',
-      btnTitleShowContent: 'Hiển thị',
-      titleShowLength: 'Hiển thị',
-    },
-    danhGiaCuaToi: {
-      diemTrungbinhTitle: 'Điểm trung bình tất cả các khóa học',
-      anCacMonChuaHoc: 'Ẩn các môn chưa học',
-      logic: 'Logic',
-      algorithmicThinking: 'Tư duy',
-      userInteraction: 'Tương tác người dùng',
-      errorHandlingandExceptions: 'Xử lí lỗi',
-      relativePerformance: 'Hiệu năng',
-      clarityandSimplicity: 'Sự rõ ràng',
-      danhGiaTatCa: 'Đánh giá tất cả',
-    },
-    chatBot: {
-      xemVideoHuongDanTitle: 'Xem video hướng dẫn',
-    },
-    feedBack: {
-      moTa: 'Mô tả',
-      danhGia: 'Đánh giá',
-      huy: 'Hủy',
-      thongBaoThanhCong: 'Đánh giá thành công',
-      thongBaoThatBai: 'Đánh giá thất bại',
-    },
-  },
-};
-const checkRoles = (roles: any) => {
-  if (myRoles) {
-    for (let i = 0; i < roles.length; i++) {
-      if (myRoles.indexOf(roles[i]) !== -1) return true;
-    }
-  }
-  return false;
-};
-const menus = [
-  {
-    icon: 'newspaper',
-    title: language?.navBar?.newFeed,
-    show: true,
-    link: '/',
-    items: [],
-  },
-  {
-    icon: 'user',
-    title: language.navBar.userInfomation,
-    show: true,
-    link: '/hocvien/thongtincanhan',
-    items: [],
-  },
-  {
-    icon: 'user-graduate',
-    title: language.navBar.student.title,
-    show: checkRoles(['HocVien']),
-    link: '/',
-    items: [
-      {
-        icon: 'marker',
-        title: language.navBar.student.sub.attandance,
-        link: '/hocvien/diemdanh',
-        show: checkRoles(['HocVien']),
-      },
-      {
-        icon: 'marker',
-        title: language.navBar.student.sub.myCourse,
-        show: checkRoles(['HocVien']),
-        link: '/hocvien/khoahoc',
-      },
-      {
-        icon: 'comment-dots',
-        title: language.navBar.student.sub.chatBot,
-        link: '/hocvien/chatbot',
-        show: checkRoles(['HocVien']),
-      },
-      {
-        icon: 'chart-pie',
-        title: language.navBar.student.sub.danhGia,
-        show: checkRoles(['HocVien']),
-        link: '/hocvien/danhgiacuatoi',
-      },
-    ],
-  },
-  {
-    icon: 'user-tie',
-    title: language.navBar.mentor.title,
-    show: checkRoles(['TroGiang']),
-    link: '/',
-    items: [
-      {
-        icon: 'user-graduate',
-        title: language.navBar.mentor.sub.myStudent,
-        show: checkRoles(['TroGiang']),
-        link: '/my-students',
-      },
-      {
-        icon: 'users-rectangle',
-        title: language.navBar.mentor.sub.takeCare,
-        show: checkRoles(['TroGiang']),
-        link: '/giamsat/hocvien',
-      },
-      {
-        icon: 'circle-check',
-        title: language.navBar.mentor.sub.studentAttendance,
-        link: '/giamsat/diemdanhhocvien',
-        show: checkRoles(['TroGiang']),
-      },
-      {
-        icon: 'rectangle-list',
-        title: language.navBar.mentor.sub.assignStudent,
-        show: checkRoles(['TroGiang']),
-        link: '/giamsat/phanconghocvien',
-      },
-    ],
-  },
-  {
-    icon: 'users',
-    title: language.navBar.user.title,
-    show: checkRoles(['Admin']),
-    link: '/',
-    items: [
-      {
-        icon: 'rectangle-list',
-        title: language.navBar.user.sub.listStudent,
-        show: checkRoles(['Admin']),
-        link: '/nguoidung/quanlyhocvien',
-      },
-      {
-        icon: 'clipboard-list',
-        title: language.navBar.user.sub.listAccount,
-        show: checkRoles(['Admin']),
-        link: '/nguoidung/quanlytaikhoan',
-      },
-    ],
-  },
-  {
-    icon: 'file-word',
-    title: language.navBar.content.title,
-    show: checkRoles(['Admin']),
-    link: '/noidung',
-    items: [
-      {
-        icon: 'window-maximize',
-        title: language.navBar.content.sub.information,
-        show: checkRoles(['Admin']),
-        link: '/noidung/thongtin',
-      },
-      {
-        icon: 'train-subway',
-        title: language.navBar.content.sub.subjects,
-        show: checkRoles(['Admin']),
-        link: '/noidung/monhoc',
-      },
-      {
-        icon: 'clipboard-list',
-        title: language.navBar.content.sub.courses,
-        show: checkRoles(['Admin']),
-        link: '/noidung/khoahoc',
-      },
-      {
-        icon: 'video',
-        title: language.navBar.content.sub.video,
-        show: checkRoles(['Admin']),
-        link: '/noidung/videobaigiang',
-      },
-    ],
-  },
-  {
-    icon: 'screwdriver-wrench',
-    title: language.navBar.manage.title,
-    show: checkRoles(['Admin']),
-    link: '/quanly',
-    items: [
-      {
-        icon: 'clipboard-list',
-        title: language.navBar.manage.sub.assign,
-        link: '/assignments',
-        show: checkRoles(['Admin']),
-      },
-      {
-        icon: 'clock-rotate-left',
-        title: language.navBar.manage.sub.history,
-        link: '/lich-su-truy-cap',
-        show: checkRoles(['Admin']),
-      },
-      {
-        icon: 'list-check',
-        title: language.navBar.manage.sub.takeCareAttandance,
-        link: '/giamsat/diemdanh',
-        show: checkRoles(['Admin']),
-      },
-      {
-        icon: 'check',
-        title: language.navBar.manage.sub.studentAttandance,
-        link: '/giamsat/diemdanhhocvien',
-        show: checkRoles(['Admin']),
-      },
-      {
-        icon: 'building',
-        title: language.navBar.manage.sub.center,
-        show: checkRoles(['Admin']),
-        link: '/quanly/trungtam',
-      },
-      {
-        icon: 'table-list',
-        title: language.navBar.manage.sub.commonManage,
-        show: checkRoles(['Admin']),
-        link: '/quanly/quanlychung',
-      },
-      {
-        icon: 'face-smile',
-        title: language.navBar.manage.sub.chatBot,
-        link: '/quanly/chatbot',
-        show: checkRoles(['Admin']),
-      },
-      {
-        icon: 'comments',
-        title: language.navBar.manage.sub.chatBotFeedBack,
-        link: '/quanly/chatbotfeedback',
-        show: checkRoles(['Admin']),
-      },
-    ],
-  },
-  {
-    icon: 'list-ol',
-    title: language.navBar.testOnline.title,
-    show: true,
-    link: '/',
-    items: [
-      {
-        icon: 'marker',
-        title: language.navBar.testOnline.sub.check,
-        show: checkRoles(['HocVien']),
-        link: '/thu-vien-de-thi',
-      },
-      {
-        icon: 'marker',
-        title: language.navBar.testOnline.sub.testLibrary,
-        show: checkRoles(['Admin']),
-        link: '/quanly/dethi',
-      },
-      {
-        icon: 'circle-question',
-        title: language.navBar.testOnline.sub.quizLibrary,
-        show: checkRoles(['Admin']),
-        link: '/quanly/khocauhoi',
-      },
-      {
-        icon: 'cog',
-        title: language.navBar.testOnline.sub.settingManage,
-        show: checkRoles(['Admin']),
-        link: '/quanly/test-online/cai-dat',
-      },
-    ],
-  },
-  {
-    icon: 'calendar-check',
-    title: language.navBar.job.title,
-    show: true,
-    link: '/congviec',
-    items: [
-      {
-        icon: 'briefcase',
-        title: language.navBar.job.sub.jobGroupManage,
-        show: checkRoles(['Admin']),
-        link: '/congviec/quanlynhomviec',
-      },
-      {
-        icon: 'cogs',
-        title: language.navBar.job.sub.setting,
-        show: checkRoles(['Admin']),
-        link: '/congviec/cauhinh',
-      },
-      {
-        icon: 'users',
-        title: language.navBar.job.sub.myJobGroup,
-        show: checkRoles(['HocVien']),
-        link: '/congviec/nhomvieccuatoi',
-      },
-    ],
-  },
-  {
-    icon: 'toolbox',
-    title: language.navBar.marketingTools.title,
-    show: checkRoles(['Admin', 'Marketing']),
-    link: '/',
-    items: [
-      {
-        icon: 'message',
-        title: language.navBar.marketingTools.sub.templateMessage,
-        show: checkRoles(['Admin', 'Marketing']),
-        link: '/marketing-tools/mau-tin-nhan',
-      },
-      {
-        icon: 'user-graduate',
-        title: language.navBar.marketingTools.sub.studentInterested,
-        show: checkRoles(['Admin', 'Marketing']),
-        link: '/marketing-tools/hoc-vien-quan-tam',
-      },
-    ],
-  },
-];
 
 const onOpenChange = (keys: any) => {
   state.openKeys = keys[keys.length - 1] !== 'recharts' ? [keys.length && keys[keys.length - 1]] : keys;
 };
+
 const onClick = (item: { keyPath: any }) => {
   if (item.keyPath.length === 1) state.openKeys = [];
 };
@@ -730,47 +75,619 @@ watch(
     @openChange="onOpenChange"
     @click="onClick"
   >
-    <!-- {{ menus }} -->
-    <template v-for="menu in menus">
-      <a-menu-item :key="menu.title" @click="toggleCollapsed" v-if="menu?.items?.length === 0">
-        <template #icon>
-          <font-awesome-icon
-            class="super-crazy-colors"
-            :icon="menu.icon"
-            size="1x"
-            :style="{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }"
-          />
-        </template>
-        <router-link class="large-text" :to="menu.link">{{ menu.title }}</router-link>
+    <a-sub-menu key="dashboard">
+      <template #icon>
+        <unicon name="create-dashboard"></unicon>
+      </template>
+      <template #title>Dashboard</template>
+      <a-menu-item @click="toggleCollapsed" key="home-one">
+        <router-link to="/demo-one"> Demo 1 </router-link>
       </a-menu-item>
-      <a-sub-menu :key="menu?.title" v-else-if="menu.show">
-        <template #icon>
-          <font-awesome-icon
-            class="super-crazy-colors"
-            :icon="menu.icon"
-            size="2x"
-            :style="{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }"
-          />
-        </template>
-        <template style="font-size: 1rem !important" #title>
-          <span class="large-text">{{ menu.title }}</span></template
+      <a-menu-item @click="toggleCollapsed" key="home-two">
+        <router-link to="/demo-two"> Demo 2 </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="home-three">
+        <router-link to="/demo-three"> Demo 3 </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="home-four">
+        <router-link to="/demo-four"> Demo 4 </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="home-five">
+        <router-link to="/demo-five"> Demo 5 </router-link>
+      </a-menu-item>
+    </a-sub-menu>
+
+    <a-sub-menu key="layout">
+      <template #icon>
+        <unicon name="window-section"></unicon>
+      </template>
+      <template #title>Layouts</template>
+      <a-menu-item @click="toggleCollapsed" key="topMenu">
+        <a
+          @click="
+            (e) => {
+              e.preventDefault();
+              toggleCollapsed();
+              modeChangeTopNav();
+            }
+          "
+          to="#"
         >
-        <a-menu-item @click="toggleCollapsed" :key="submenu.title" v-for="submenu in menu?.items">
-          <router-link :to="submenu.link" class="large-text">
-            <font-awesome-icon
-              class="super-crazy-colors"
-              :icon="submenu.icon"
-              size="2x"
-              :style="{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }"
-            />&ensp;{{ submenu.title }}
-          </router-link>
-        </a-menu-item>
-      </a-sub-menu>
-    </template>
+          Top Menu
+        </a>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="sideMenu">
+        <a
+          @click="
+            (e) => {
+              e.preventDefault();
+              toggleCollapsed();
+              modeChangeSideNav();
+            }
+          "
+          to="#"
+        >
+          Side Menu
+        </a>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="rtl">
+        <a
+          @click="
+            (e) => {
+              e.preventDefault();
+              toggleCollapsed();
+              onRtlChange();
+            }
+          "
+          to="#"
+        >
+          RTL
+        </a>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="ltr">
+        <a
+          @click="
+            (e) => {
+              e.preventDefault();
+              toggleCollapsed();
+              onLtrChange();
+            }
+          "
+          to="#"
+        >
+          LTR
+        </a>
+      </a-menu-item>
+    </a-sub-menu>
+
+    <a-menu-item @click="toggleCollapsed" key="changelog">
+      <template #icon>
+        <unicon name="arrow-growth"></unicon>
+      </template>
+      <router-link to="/changelog">
+        Changelog
+        <span class="badge badge-primary menuItem">{{ versions[0].version }}</span>
+      </router-link>
+    </a-menu-item>
+
+    <NavTitle class="ninjadash-sidebar-nav-title">Applications</NavTitle>
+    <a-sub-menu key="mail">
+      <template #icon>
+        <unicon name="envelope"></unicon>
+      </template>
+      <template #title>Email</template>
+      <a-menu-item @click="toggleCollapsed" key="inbox">
+        <router-link to="/app/mail/inbox"> Inbox </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="singleMail">
+        <router-link to="/app/mail-single/1585118055048"> Read Email </router-link>
+      </a-menu-item>
+    </a-sub-menu>
+
+    <a-sub-menu key="chat">
+      <template #icon>
+        <unicon name="chat"></unicon>
+      </template>
+      <template #title>Chat</template>
+      <a-menu-item @click="toggleCollapsed" key="privateSingle">
+        <router-link to="/app/chat/private/rofiq@gmail.com"> Private </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="groupSingle">
+        <router-link to="/app/chat/group/1"> Group </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="allSingle">
+        <router-link to="/app/chat/all/rofiq@gmail.com"> All </router-link>
+      </a-menu-item>
+    </a-sub-menu>
+
+    <a-sub-menu key="ecommerce">
+      <template #icon>
+        <unicon name="shopping-cart"></unicon>
+      </template>
+      <template #title>eCommerce</template>
+      <a-menu-item @click="toggleCollapsed" key="ecommerce-product">
+        <router-link to="/app/ecommerce/product/grid"> Products </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="detail">
+        <router-link to="/app/ecommerce/productDetails/5"> Product Detail </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="add-product">
+        <router-link to="/app/ecommerce/add-product"> Product Add </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="edit-product">
+        <router-link to="/app/ecommerce/edit-product"> Product Update </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="orders">
+        <router-link to="/app/ecommerce/orders"> Orders </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="sellers">
+        <router-link to="/app/ecommerce/sellers"> Sellers </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="invoice">
+        <router-link to="/app/ecommerce/invoice"> Invoice </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="cart">
+        <router-link to="/app/ecommerce/cart"> Cart </router-link>
+      </a-menu-item>
+    </a-sub-menu>
+
+    <a-sub-menu key="social">
+      <template #icon>
+        <unicon name="500px"></unicon>
+      </template>
+      <template #title>Social App</template>
+      <a-menu-item @click="toggleCollapsed" key="overview">
+        <router-link to="/app/social/profile/overview"> My Profile </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="timeline">
+        <router-link to="/app/social/profile/timeline"> Timeline </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="activity">
+        <router-link to="/app/social/profile/activity"> Activity </router-link>
+      </a-menu-item>
+    </a-sub-menu>
+
+    <a-sub-menu key="project">
+      <template #icon>
+        <unicon name="bag"></unicon>
+      </template>
+      <template #title>Projects</template>
+      <a-menu-item @click="toggleCollapsed" key="project-grid">
+        <router-link to="/app/project/project-grid"> Project Grid </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="project-list">
+        <router-link to="/app/project/project-list"> Project List </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="createProject">
+        <router-link to="/app/createProject/create-grid"> Project Create </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="projectDetails">
+        <router-link to="/app/project/projectDetails/1"> Project Details </router-link>
+      </a-menu-item>
+    </a-sub-menu>
+
+    <a-sub-menu key="jobSearch">
+      <template #icon>
+        <unicon name="headphones"></unicon>
+      </template>
+      <template #title>Job Search</template>
+      <a-menu-item @click="toggleCollapsed" key="grid">
+        <router-link to="/app/jobSearch/grid"> Grid Style </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="list">
+        <router-link to="/app/jobSearch/list"> List Style </router-link>
+      </a-menu-item>
+    </a-sub-menu>
+
+    <NavTitle class="ninjadash-sidebar-nav-title">CRUD</NavTitle>
+    <a-sub-menu key="axios">
+      <template #icon>
+        <unicon name="server"></unicon>
+      </template>
+      <template #title>Axios</template>
+      <a-menu-item @click="toggleCollapsed" key="axios-view">
+        <router-link to="/crud/axios-view"> View All </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="axios-add">
+        <router-link to="/crud/axios-add"> Add New </router-link>
+      </a-menu-item>
+    </a-sub-menu>
+
+    <NavTitle class="ninjadash-sidebar-nav-title">FEATURES</NavTitle>
+    <a-sub-menu key="components">
+      <template #icon>
+        <unicon name="layer-group"></unicon>
+      </template>
+      <template #title>UI Elements</template>
+      <a-menu-item @click="toggleCollapsed" key="alerts">
+        <router-link to="/components/alerts"> Alerts </router-link>
+      </a-menu-item>
+
+      <a-menu-item @click="toggleCollapsed" key="avatar">
+        <router-link to="/components/avatar"> Avatar </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="badge">
+        <router-link to="/components/badge"> Badge </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="breadcrumb">
+        <router-link to="/components/breadcrumb"> Breadcrumb </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="button">
+        <router-link to="/components/button"> Buttons </router-link>
+      </a-menu-item>
+
+      <a-menu-item @click="toggleCollapsed" key="calendar">
+        <router-link to="/components/calendar"> Calendar </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="cards">
+        <router-link to="/components/cards"> Cards </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="carousel">
+        <router-link to="/components/carousel"> Carousel </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="cascader">
+        <router-link to="/components/cascader"> Cascader </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="checkbox">
+        <router-link to="/components/checkbox"> Checkbox </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="collapse">
+        <router-link to="/components/collapse"> Collapse </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="comments">
+        <router-link to="/components/comments"> Comments </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="dash-base">
+        <router-link to="/components/dash-base"> Dashboard Base </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="datePicker">
+        <router-link to="/components/datePicker"> DatePicker </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="drag">
+        <router-link to="/components/drag-drop"> Drag & Drop </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="drawer">
+        <router-link to="/components/drawer"> Drawer </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="dropdown">
+        <router-link to="/components/dropdown"> Dropdown </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="empty">
+        <router-link to="/components/empty"> Empty </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="grids">
+        <router-link to="/components/grid"> Grid </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="input">
+        <router-link to="/components/input"> Input </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="list">
+        <router-link to="/components/list"> List </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="menu">
+        <router-link to="/components/menu"> Menu </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="message">
+        <router-link to="/components/message"> Message </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="modal">
+        <router-link to="/components/modal"> Modal </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="notification">
+        <router-link to="/components/notification"> Notification </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="pageHeader">
+        <router-link to="/components/pageHeader"> PageHeader </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="pagination">
+        <router-link to="/components/pagination"> Pagination </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="popConfirm">
+        <router-link to="/components/popConfirm"> PopConfirm </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="popover">
+        <router-link to="/components/popover"> Popover </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="progressbar">
+        <router-link to="/components/progressbar"> Progress Bar </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="radio">
+        <router-link to="/components/radio"> Radio </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="rate">
+        <router-link to="/components/rate"> Rate </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="result">
+        <router-link to="/components/result"> Result </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="select">
+        <router-link to="/components/select"> Select </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="skeleton">
+        <router-link to="/components/skeleton"> Skeleton </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="slider">
+        <router-link to="/components/slider"> Slider </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="spiner">
+        <router-link to="/components/spiner"> Spiner </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="statistic">
+        <router-link to="/components/statistic"> Statistic </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="steps">
+        <router-link to="/components/steps"> Steps </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="switch">
+        <router-link to="/components/switch"> Switch </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="tabs">
+        <router-link to="/components/tabs"> Tabs </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="tags">
+        <router-link to="/components/tags"> Tags </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="timeline">
+        <router-link to="/components/timeline"> Timeline </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="time-picker">
+        <router-link to="/components/time-picker"> TimePicker </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="tree-select">
+        <router-link to="/components/tree-select"> Tree Select </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="upload">
+        <router-link to="/components/upload"> Upload </router-link>
+      </a-menu-item>
+    </a-sub-menu>
+
+    <a-sub-menu key="charts">
+      <template #icon>
+        <unicon name="chart-bar"></unicon>
+      </template>
+      <template #title>Charts</template>
+      <a-menu-item @click="toggleCollapsed" key="chart-js">
+        <router-link to="/chart/chart-js"> Chart js </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="googleChart">
+        <router-link to="/chart/google-chart"> Google Chart </router-link>
+      </a-menu-item>
+    </a-sub-menu>
+    <a-sub-menu key="apexchart">
+      <template #icon>
+        <unicon name="chart"></unicon>
+      </template>
+      <template #title>Apex Charts</template>
+      <a-menu-item @click="toggleCollapsed" key="columnChart">
+        <router-link to="/apexchart/column-chart"> Column Charts </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="lineChart">
+        <router-link to="/apexchart/line-chart"> Line Charts </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="areaChart">
+        <router-link to="/apexchart/area-chart"> Area Charts </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="barChart">
+        <router-link to="/apexchart/bar-chart"> Bar Charts </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="pieChart">
+        <router-link to="/apexchart/pie-chart"> Pie Charts </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="radialbarChart">
+        <router-link to="/apexchart/radialbar-chart"> Radialbar Charts </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="radarChart">
+        <router-link to="/apexchart/radar-charts"> Radar Charts </router-link>
+      </a-menu-item>
+    </a-sub-menu>
+
+    <a-sub-menu key="forms">
+      <template #icon>
+        <unicon name="compact-disc"></unicon>
+      </template>
+      <template #title>Forms</template>
+      <a-menu-item @click="toggleCollapsed" key="formLayout">
+        <router-link to="/forms/form-layout"> Form Layout </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="formElements">
+        <router-link to="/forms/form-elements"> Form Elements </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="formComponents">
+        <router-link to="/forms/form-components"> Form Components </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="formValidation">
+        <router-link to="/forms/form-validation"> Form Validation </router-link>
+      </a-menu-item>
+    </a-sub-menu>
+
+    <a-sub-menu key="tables">
+      <template #icon>
+        <unicon name="table"></unicon>
+      </template>
+      <template #title>Table</template>
+      <a-menu-item @click="toggleCollapsed" key="table">
+        <router-link to="/tables/basic"> Basic Table </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="DataTable">
+        <router-link to="/tables/dataTable"> Data Table </router-link>
+      </a-menu-item>
+    </a-sub-menu>
+
+    <a-sub-menu key="widgets">
+      <template #icon>
+        <unicon name="server"></unicon>
+      </template>
+      <template #title>Widgets</template>
+      <a-menu-item @click="toggleCollapsed" key="widgetCharts">
+        <router-link to="/widgets/chart"> Charts </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="widgetsCard">
+        <router-link to="/widgets/card"> Card </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="widgetMixed">
+        <router-link to="/widgets/mixed"> Mixed </router-link>
+      </a-menu-item>
+    </a-sub-menu>
+    <a-sub-menu key="wizard">
+      <template #icon>
+        <unicon name="square-full"></unicon>
+      </template>
+      <template #title>Wizard</template>
+      <a-menu-item @click="toggleCollapsed" key="wizard1">
+        <router-link to="/wizard/wizard1"> Wizard1 </router-link>
+      </a-menu-item>
+    </a-sub-menu>
+    <a-sub-menu key="icons">
+      <template #icon>
+        <unicon name="apps"></unicon>
+      </template>
+      <template #title>Icons</template>
+      <a-menu-item @click="toggleCollapsed" key="unicons">
+        <router-link to="/icons/unicons"> Unicons </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="featherIcons">
+        <router-link to="/icons/featherIcons"> FeatherIcons </router-link>
+      </a-menu-item>
+      <!-- <a-menu-item @click="toggleCollapsed" key="antdIcons">
+        <router-link to="/icons/antdIcons"> Ant Design Icons </router-link>
+      </a-menu-item> -->
+      <a-menu-item @click="toggleCollapsed" key="fa">
+        <router-link to="/icons/fa"> FontAwesome Icons </router-link>
+      </a-menu-item>
+    </a-sub-menu>
+    <a-sub-menu key="maps">
+      <template #icon>
+        <unicon name="map"></unicon>
+      </template>
+      <template #title>Maps</template>
+      <a-menu-item @click="toggleCollapsed" key="google">
+        <router-link to="/maps/google"> Google Maps </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="leaflet">
+        <router-link to="/maps/leaflet"> Leaflet </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="vector">
+        <router-link to="/maps/vector"> Vector </router-link>
+      </a-menu-item>
+    </a-sub-menu>
+
+    <NavTitle class="ninjadash-sidebar-nav-title">Pages</NavTitle>
+    <a-sub-menu key="settings">
+      <template #icon>
+        <unicon name="setting"></unicon>
+      </template>
+      <template #title>Settings</template>
+      <a-menu-item @click="toggleCollapsed" key="profile-settings">
+        <router-link to="/page/profile-settings"> Settings </router-link>
+      </a-menu-item>
+
+      <a-menu-item @click="toggleCollapsed" key="set-profile">
+        <router-link to="/page/profile-settings/profile"> Profile </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="set-account">
+        <router-link to="/page/profile-settings/account"> Account </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="set-password">
+        <router-link to="/page/profile-settings/password"> Password </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="set-social">
+        <router-link to="/page/profile-settings/social"> Social </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="set-notification">
+        <router-link to="/page/profile-settings/notification"> Notification </router-link>
+      </a-menu-item>
+    </a-sub-menu>
+    <a-menu-item @click="toggleCollapsed" key="gallery">
+      <template #icon>
+        <unicon name="images"></unicon>
+      </template>
+      <router-link to="/page/gallery"> Gallery </router-link>
+    </a-menu-item>
+    <a-menu-item @click="toggleCollapsed" key="pricing">
+      <template #icon>
+        <unicon name="usd-circle"></unicon>
+      </template>
+      <router-link to="/page/pricing"> Pricing </router-link>
+    </a-menu-item>
+    <a-menu-item @click="toggleCollapsed" key="banners">
+      <template #icon>
+        <unicon name="presentation"></unicon>
+      </template>
+      <router-link to="/page/banners"> Banners </router-link>
+    </a-menu-item>
+    <a-menu-item @click="toggleCollapsed" key="testimonials">
+      <template #icon>
+        <unicon name="book-open"></unicon>
+      </template>
+      <router-link to="/page/testimonials"> Testimonials </router-link>
+    </a-menu-item>
+    <a-menu-item @click="toggleCollapsed" key="faq`s">
+      <template #icon>
+        <unicon name="question-circle"></unicon>
+      </template>
+      <router-link to="/page/faqs"> FAQs </router-link>
+    </a-menu-item>
+    <a-menu-item @click="toggleCollapsed" key="search">
+      <template #icon>
+        <unicon name="search"></unicon>
+      </template>
+      <router-link to="/page/search"> Search </router-link>
+    </a-menu-item>
+    <a-menu-item @click="toggleCollapsed" key="starter">
+      <template #icon>
+        <unicon name="circle"></unicon>
+      </template>
+      <router-link to="/starter"> Blank Page </router-link>
+    </a-menu-item>
+    <a-sub-menu key="blog">
+      <template #icon>
+        <unicon name="document-layout-left"></unicon>
+      </template>
+      <template #title>Blog</template>
+      <a-menu-item @click="toggleCollapsed" key="blog1">
+        <router-link to="/page/blog/blog1"> Blog One </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="blog2">
+        <router-link to="/page/blog/blog2"> Blog Two </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="blog3">
+        <router-link to="/page/blog/blog3"> Blog Three </router-link>
+      </a-menu-item>
+      <a-menu-item @click="toggleCollapsed" key="details">
+        <router-link to="/page/blog/details/1"> Blog Details </router-link>
+      </a-menu-item>
+    </a-sub-menu>
+    <a-menu-item @click="toggleCollapsed" key="support">
+      <template #icon>
+        <unicon name="headphones"></unicon>
+      </template>
+      <router-link to="/page/support"> Support Center </router-link>
+    </a-menu-item>
+
+    <a-menu-item @click="toggleCollapsed" key="maintenance">
+      <template #icon>
+        <unicon name="airplay"></unicon>
+      </template>
+      <router-link to="/page/maintenance"> Maintenance </router-link>
+    </a-menu-item>
+
+    <a-menu-item @click="toggleCollapsed" key="404">
+      <template #icon>
+        <unicon name="info-circle"></unicon>
+      </template>
+      <router-link to="/page/404"> 404 </router-link>
+    </a-menu-item>
+    <a-menu-item @click="toggleCollapsed" key="comingSoon">
+      <template #icon>
+        <unicon name="clock"></unicon>
+      </template>
+      <router-link to="/page/comingSoon"> Coming Soon </router-link>
+    </a-menu-item>
+    <a-menu-item @click="toggleCollapsed" key="termsConditions">
+      <template #icon>
+        <unicon name="file-shield-alt"></unicon>
+      </template>
+      <router-link to="/page/termsConditions"> Terms & Conditions </router-link>
+    </a-menu-item>
   </a-menu>
 </template>
-<style>
-.large-text {
-  font-size: 14px !important; /* Thay đổi giá trị này để điều chỉnh kích thước chữ */
-}
-</style>
