@@ -112,7 +112,7 @@ const onEventChange = {
           <div class="ninjadash-header-content__left">
             <div class="navbar-brand align-cener-v">
               <router-link :class="topMenu && innerWidth > 991 ? 'ninjadash-logo top-menu' : 'ninjadash-logo'" to="/">
-                <img :src="!darkMode ? `/src/assets/img/Logo_Dark.svg` : `/src/assets/img/Logo_White.svg`" alt="logo" />
+                <img :src="!darkMode ? `/src/assets/logo_new.png` : `src/assets/logo_new.png`" alt="logo" />
               </router-link>
               <sdButton v-if="!topMenu || innerWidth <= 991" @click="toggleCollapsed" type="white">
                 <img :src="`/src/assets/img/icon/align-center-alt.svg`" alt="menu" />
