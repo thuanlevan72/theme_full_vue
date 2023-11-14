@@ -123,7 +123,7 @@ const kiemTra = [
       <a-card :bordered="false" class="card-list">
         <DemoFourStyle>
           <a-row justify="center" :gutter="25">
-            <a-col :xxl="8" :xl="24" :md="24" :xs="24" v-for="duLieu in kiemTra" :key="duLieu.id">
+            <a-col :xxl="8" :xl="8" :md="12" :xs="24" v-for="duLieu in kiemTra" :key="duLieu.id">
               <a-card class="card-item" :title="duLieu.title" :bordered="false" style=" padding: 20px 20px;">
                 <h3 class="header-title">{{ duLieu.headerTitle }}</h3>
                 <p>{{ duLieu.target }}</p>
@@ -133,38 +133,43 @@ const kiemTra = [
               </a-card>
             </a-col>
           </a-row>
-          <div class="pagination-style" >
-            <a-pagination  v-model:current="current1" show-quick-jumper :total="100" @change="onChange" />
+          <div class="pagination-style">
+            <a-pagination v-model:current="current1" show-quick-jumper :total="100" @change="onChange" />
           </div>
         </DemoFourStyle>
-        
+
       </a-card>
     </Main>
   </div>
 </template>
 <style>
-.main{
+.main {
   padding: 20px 20px;
   font-family: Arial, Helvetica, sans-serif;
 }
-.card-list{
+
+.card-list {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   border-radius: 10px;
   overflow: auto;
 }
-.card-item{
+
+.card-item {
   border: 0.5px solid rgb(212, 199, 199);
   border-radius: 10px;
   margin-top: 20px;
 }
-.card-item:hover{
+
+.card-item:hover {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   border: none;
 }
-.header-title{
+
+.header-title {
   margin-top: 10px;
 }
-.handle-button{
+
+.handle-button {
   background-color: rgb(237, 237, 124);
   margin-top: 10px;
   border: 10px;
@@ -174,12 +179,25 @@ const kiemTra = [
   align-items: center;
   border-radius: 10px;
 }
-.pagination-style{
+
+.pagination-style {
   margin-top: 40px;
   text-align: right;
 }
-.card-item .ant-card-head-title{
+
+.card-item .ant-card-head-title {
   font-weight: bold;
   font-size: 20px;
 }
-</style>
+
+.main .ant-row-center {
+  max-height: 400px;
+  overflow-y: auto;
+
+}
+
+@media screen and (max-width: 600px) {
+  .main .ant-row-center {
+    max-height: 460px;
+  }
+}</style>
