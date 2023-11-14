@@ -15,6 +15,16 @@ const routes = [
         component: () => import('@/views/Mainlayout.vue'),
       },
       {
+        path: 'demo-BangTin',
+        name: 'demoBangTin',
+        component: () => import('@/views/dashboard/DemoBangTin.vue')
+      },
+      {
+        path: 'demo-DanhGia',
+        name: 'demoDanhGia',
+        component: () => import('@/views/dashboard/demoDanhGia.vue')
+      },
+      {
         path: 'demo-one',
         name: 'demoOne',
         component: () => import('@/views/dashboard/DemoOne.vue'),

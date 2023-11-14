@@ -80,6 +80,12 @@ watch(
         <unicon name="create-dashboard"></unicon>
       </template>
       <template #title>Dashboard</template>
+      <a-menu-item>
+        <router-link to="/demo-BangTin">Bảng tin</router-link>
+      </a-menu-item>
+      <a-menu-item>
+        <router-link to="/demo-DanhGia">Đánh giá</router-link>
+      </a-menu-item>
       <a-menu-item @click="toggleCollapsed" key="home-one">
         <router-link to="/demo-one"> Demo 1 </router-link>
       </a-menu-item>
