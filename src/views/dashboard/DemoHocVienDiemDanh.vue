@@ -135,9 +135,7 @@ const pageRoutes = [
     overflow: auto;
     scrollbar-width: thin;
 }
-.Attendance-history .ant-table-content:not(:hover){
-    overflow: hidden;
-}
+
 .Attendance-history .ant-table-content .ant-table-thead {
     position: sticky;
     z-index: 1;
