@@ -58,6 +58,7 @@ const onProvinceChange = () => {
     { id: 12, name: 'Quận Hoàn Kiếm', provinceId: 1 },
     { id: 13, name: 'Quận Tây Hồ', provinceId: 1 },
     { id: 14, name: 'Quận Cầu Giấy', provinceId: 1 },
+    { id: 21, name: 'Quận Củ Chi', provinceId: 2 },
   ];
   selectedDistrict.value = null;
   selectedWard.value = null;
@@ -123,12 +124,18 @@ const onDistrictChange = () => {
 
 .input-border {
   padding: 6px;
-  border-radius: 3px;
+  border-radius: 2px;
 }
 
 .row-style-them {
   align-items: center;
   margin-bottom: 10px;
+}
+.datetime-select {
+  margin-top: 1px;
+  padding: 7px;
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 2px !important;
 }
 </style>
 
@@ -193,7 +200,7 @@ const onDistrictChange = () => {
             <a-date-picker
               :default-value="dayjs('2023/01/01', dateFormat)"
               :format="dateFormat"
-              style="border: 2px solid #d9d9d9 !important"
+              style="margin-top: 1px; padding: 7px; border: 1px solid #d9d9d9 !important; border-radius: 2px"
             />
           </DatePickerWrapper>
         </div>
@@ -227,7 +234,7 @@ const onDistrictChange = () => {
           <unicon name="user-location"></unicon>
           <label for="" class="lablestyle-tt">Địa chỉ</label>
         </div>
-        <div :md="24" :xs="24" style="margin-top: 20px">
+        <div :md="24" :xs="24" style="margin-top: 22px">
           <label for="province" class="lablestyle">Tỉnh thành</label>
           <a-select v-model="selectedProvince" @change="onProvinceChange" style="width: 100%">
             <a-select-option v-for="province in provinces" :key="province.id" :value="province.id">
