@@ -14,5 +14,5 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
   },
-  "files": ["env.d.ts", "./src/layoutdemo/__VLS_template.ts"]
+  "files": ["env.d.ts"]
 }
