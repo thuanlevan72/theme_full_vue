@@ -23,7 +23,7 @@ const left = computed(() => (!rtl.value ? 'left' : 'right'));
 const me = ref('woadud@gmail.com');
 
 const singleContent = computed(() => (chatData.value[0] ? chatData.value[0].content : []));
-const name = computed(() => chatData.value[0] && chatData.value[0].userName);
+const name = 'AI';
 
 const inputValue = ref('');
 const fileList = ref([]);
@@ -133,7 +133,7 @@ const attachment = {
       </template>
       <template #title>
         <sdHeading as="h5">{{ name }}</sdHeading>
-        <p>Active Now</p>
+        <p>Hoạt động</p>
       </template>
 
       <ul class="ninjadash-chatbox" v-if="singleContent.length">
@@ -169,7 +169,7 @@ const attachment = {
 
                   <div v-if="email !== me" class="ninjadash-chatbox__contentInner d-flex">
                     <div class="ninjadash-chatbox__message">
-                      <MessageList class="message-box">{{ content }}</MessageList>
+                      <MessageList class="message-box">{{ 'bạn có mua ti vi không' }}</MessageList>
                     </div>
 
                     <div class="ninjadash-chatbox__actions">
@@ -305,7 +305,7 @@ const attachment = {
                       </sdDropdown>
                     </div>
                     <div class="ninjadash-chatbox__message">
-                      <MessageList class="message-box">{{ content }}</MessageList>
+                      <MessageList class="message-box">{{ 'đến điện máy xanh mua ti vi được không' }}</MessageList>
                     </div>
                   </div>
 

@@ -1,106 +1,42 @@
 <script setup lang="ts">
-import { UL, Content, ChatSidebar } from './style';
 import { UserBioBox } from '../myProfile/overview/style';
 import { faFacebookF, faDribbble, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { Main } from '../../styled';
-import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
-import { useRoute } from 'vue-router';
-import { PerfectScrollbar } from 'vue3-perfect-scrollbar';
 import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css';
-
-const { state } = useStore();
-const match = computed(() => useRoute().matched[1]);
-const rtl = computed(() => state.themeLayout.rtlData);
-const searchData = computed(() => state.headerSearchData.data);
-const left = computed(() => (!rtl.value ? 'left' : 'right'));
-const me = ref('woadud@gmail.com');
+const title = 'Khai báo biến cơ bản';
 </script>
 
 <template>
-  <sdPageHeader title="Chat" class="ninjadash-page-header-main"> </sdPageHeader>
-
+  <sdPageHeader title="Chat box" class="ninjadash-page-header-main"> </sdPageHeader>
   <Main>
     <a-row :gutter="30">
-      <a-col :xxl="7" :lg="10" :xs="24">
+      <a-col :xxl="7" :lg="10" :xs="24" v-if="$route.params.id">
         <UserBioBox>
           <sdCards headless>
             <article class="user-info">
-              <sdHeading as="h5" class="user-info__title">User Bio</sdHeading>
-              <p>
-                Nam malesuada dolor tellus pretium amet was hendrerit facilisi id vitae enim sed ornare there
-                suspendisse sed orci neque ac sed aliquet risus faucibus in pretium molestie nisl tempor quis odio
-                habitant.
-              </p>
+              <sdHeading as="h5" class="user-info__title">{{ title }}</sdHeading>
+              <a-button>Xem video hướng dẫn</a-button>
             </article>
             <address class="user-info">
-              <sdHeading as="h5" class="user-info__title">Contact Info</sdHeading>
-              <ul class="user-info__contact">
-                <li>
-                  <unicon name="envelope" width="14"></unicon>
-                  <span>Clayton@example.com</span>
-                </li>
-                <li>
-                  <unicon name="phone" width="14"></unicon>
-                  <span>+44 (0161) 347 8854</span>
-                </li>
-                <li>
-                  <unicon name="globe" width="14"></unicon>
-                  <span>www.example.com</span>
-                </li>
-              </ul>
+              <sdHeading as="h5" class="user-info__title">{{ 'đề bài' }}</sdHeading>
+              <p>
+                Khai báo ba số nguyên a, b, c. Ba số thực d,e,f. Ba ký tự g,h,i . Gán mỗi biến bởi một giá trị phù hợp.
+              </p>
             </address>
             <div class="user-info">
-              <sdHeading as="h5" class="user-info__title">Skills</sdHeading>
-              <div class="user-info__skills">
-                <sdButton type="light" outlined class="btn-outlined"> UI/UX </sdButton>
-                <sdButton type="light" outlined class="btn-outlined"> Branding </sdButton>
-                <sdButton type="light" outlined class="btn-outlined"> product design </sdButton>
-                <sdButton type="light" outlined class="btn-outlined"> web design </sdButton>
-                <sdButton type="light" outlined class="btn-outlined"> Application </sdButton>
-              </div>
-            </div>
-            <div class="user-info">
-              <h5 class="user-info__title">Social Profiles</h5>
-              <div class="card__social">
-                <a class="btn-icon facebook" to="#">
-                  <font-awesome-icon
-                    class="super-crazy-colors"
-                    :icon="faFacebookF"
-                    size="1x"
-                    :style="{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }"
-                  />
-                </a>
-                <a class="btn-icon twitter" to="#">
-                  <font-awesome-icon
-                    class="super-crazy-colors"
-                    :icon="faTwitter"
-                    size="1x"
-                    :style="{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }"
-                  />
-                </a>
-                <a class="btn-icon dribble" to="#">
-                  <font-awesome-icon
-                    class="super-crazy-colors"
-                    :icon="faDribbble"
-                    size="1x"
-                    :style="{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }"
-                  />
-                </a>
-                <a class="btn-icon instagram" to="#">
-                  <font-awesome-icon
-                    class="super-crazy-colors"
-                    :icon="faInstagram"
-                    size="1x"
-                    :style="{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }"
-                  />
-                </a>
+              <sdHeading as="h5" class="user-info__title">Code</sdHeading>
+              <div style="background-color: rgba(0, 0, 0, 0.717); padding: 10px; border-radius: 5px">
+                <code style="color: white">
+                  private readonly IStudentService _studentService; private readonly IAcademicYearService
+                  _academicYearService; private readonly ISubjectService _subjectService;
+                </code>
               </div>
             </div>
           </sdCards>
         </UserBioBox>
       </a-col>
-      <a-col :xxl="17" :lg="14" :xs="24">
+      <a-col :xxl="$route.params.id ? 17 : 24" :lg="14" :xs="24">
         <router-view></router-view>
       </a-col>
     </a-row>
