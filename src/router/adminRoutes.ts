@@ -17,12 +17,17 @@ const routes = [
       {
         path: 'demo-BangTin',
         name: 'demoBangTin',
-        component: () => import('@/views/dashboard/DemoBangTin.vue')
+        component: () => import('@/views/dashboard/DemoBangTin.vue'),
       },
       {
         path: 'demo-DanhGia',
         name: 'demoDanhGia',
-        component: () => import('@/views/dashboard/demoDanhGia.vue')
+        component: () => import('@/views/dashboard/demoDanhGia.vue'),
+      },
+      {
+        path: 'hocvien/thongtincanhan',
+        name: 'demoTrangCaNhan',
+        component: () => import('@/views/dashboard/DemoThongTinCaNhan.vue'),
       },
       {
         path: '/hocvien/diemdanh',
