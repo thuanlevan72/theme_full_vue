@@ -5,14 +5,17 @@ import { themeColor } from './config/theme/themeVariables';
 import { computed, onMounted } from 'vue';
 import { useStore } from 'vuex';
 import 'v-calendar/dist/style.css';
-
+import UsersApi from './apiResources/hocVien/UsersApi';
+const getApi = async () => {
+  const res = await UsersApi.getMyRoles();
+};
 const { state } = useStore();
 const rtl = computed(() => state.themeLayout.rtlData);
 const isLoading = computed(() => state.themeLayout.loading);
 const darkMode = computed(() => state.themeLayout.data);
 const topMenu = computed(() => state.themeLayout.topMenu);
 const mainContent = computed(() => state.themeLayout.main);
-
+getApi();
 onMounted(() => {
   window.addEventListener('load', () => {
     const domHtml = document.getElementsByTagName('html')[0];

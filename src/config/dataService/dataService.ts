@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getItem } from '../../utility/localStorageControl';
 
-const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT;
+const API_ENDPOINT = 'https://localhost:44331/api';
 
 const authHeader = () => ({
   Authorization: `Bearer ${getItem('access_token')}`,
