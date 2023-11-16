@@ -149,7 +149,7 @@ export default [
         name: 'unicons',
         component: () => import('@/views/icons/Unicons.vue'),
       },
-			{
+      {
         path: 'featherIcons',
         name: 'featherIcons',
         component: () => import('@/views/icons/FeatherIcons.vue'),

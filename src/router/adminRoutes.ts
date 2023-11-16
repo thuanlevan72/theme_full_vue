@@ -1,7 +1,8 @@
-import Apps from './Applications';
+import studentRoutes from './studentRoutes';
 import Features from './FeaturesRoutes';
 import Pages from './PageRoutes';
 import Components from './Components';
+import App from './Applications';
 
 const routes = [
   {
@@ -32,7 +33,7 @@ const routes = [
       {
         path: '/hocvien/diemdanh',
         name: 'demoHocVienDiemDanh',
-        component: () => import('@/views/dashboard/DemoHocVienDiemDanh.vue')
+        component: () => import('@/views/dashboard/DemoHocVienDiemDanh.vue'),
       },
       {
         path: 'demo-one',
@@ -83,7 +84,8 @@ const routes = [
       },
     ],
   },
-  ...Apps,
+  ...studentRoutes,
+  ...App,
   ...Features,
   ...Pages,
   ...Components,
