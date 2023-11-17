@@ -8,7 +8,21 @@ const title = 'Khai báo biến cơ bản';
 </script>
 
 <template>
-  <sdPageHeader title="Chat box" class="ninjadash-page-header-main"> </sdPageHeader>
+  <sdPageHeader
+    title="Chat box"
+    :routes="[
+      {
+        path: '/',
+        breadcrumbName: 'Hoc vien',
+      },
+      {
+        path: '/',
+        breadcrumbName: 'Chat box',
+      },
+    ]"
+    class="ninjadash-page-header-main"
+  >
+  </sdPageHeader>
   <Main>
     <a-row :gutter="30">
       <a-col :xxl="7" :lg="10" :xs="24" v-if="$route.params.id">
