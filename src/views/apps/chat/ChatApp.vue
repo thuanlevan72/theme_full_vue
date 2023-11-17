@@ -44,7 +44,7 @@ const title = 'Khai báo biến cơ bản';
           </sdCards>
         </UserBioBox>
       </a-col>
-      <a-col :xxl="$route.params.id ? 17 : 24" :lg="14" :xs="24">
+      <a-col :xxl="$route.params.id ? 17 : 24" :lg="$route.params.id ? 14 : 24" :xs="24">
         <router-view></router-view>
       </a-col>
     </a-row>
