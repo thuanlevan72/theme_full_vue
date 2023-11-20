@@ -38,7 +38,7 @@ const routes = [
       {
         path: '/hocvien/khoahoc',
         name: 'demoKhoaHocCuaToi',
-        component: () => import('@/views/dashboard/DemoKhoaHocCuaToi.vue')
+        component: () => import('@/views/dashboard/DemoKhoaHocCuaToi.vue'),
       },
       {
         path: 'demo-one',
