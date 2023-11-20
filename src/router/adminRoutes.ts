@@ -11,34 +11,14 @@ const routes = [
     component: () => import('@/views/dashboard/Dashboard.vue'),
     children: [
       {
-        path: '',
+        path: 'main',
         name: 'home',
         component: () => import('@/views/dashboard/demoBangTin/DemoBangTin.vue'),
       },
       {
-        path: 'demo-BangTin',
+        path: '',
         name: 'demoBangTin',
         component: () => import('@/views/dashboard/DemoBangTin.vue'),
-      },
-      {
-        path: 'demo-DanhGia',
-        name: 'demoDanhGia',
-        component: () => import('@/views/dashboard/demoDanhGia.vue'),
-      },
-      {
-        path: 'hocvien/thongtincanhan',
-        name: 'demoTrangCaNhan',
-        component: () => import('@/views/dashboard/DemoThongTinCaNhan.vue'),
-      },
-      {
-        path: '/hocvien/diemdanh',
-        name: 'demoHocVienDiemDanh',
-        component: () => import('@/views/dashboard/DemoHocVienDiemDanh.vue'),
-      },
-      {
-        path: '/hocvien/khoahoc',
-        name: 'demoKhoaHocCuaToi',
-        component: () => import('@/views/dashboard/DemoKhoaHocCuaToi.vue')
       },
       {
         path: 'demo-one',
