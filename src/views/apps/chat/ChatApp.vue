@@ -2,6 +2,7 @@
 import { UserBioBox } from '../myProfile/overview/style';
 import { faFacebookF, faDribbble, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { Main } from '../../styled';
+import SingleChat from './SingleChat.vue';
 import { useStore } from 'vuex';
 import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css';
 const title = 'Khai báo biến cơ bản';
@@ -59,7 +60,7 @@ const title = 'Khai báo biến cơ bản';
         </UserBioBox>
       </a-col>
       <a-col :xxl="$route.params.id ? 17 : 24" :lg="$route.params.id ? 14 : 24" :xs="24">
-        <router-view></router-view>
+        <SingleChat />
       </a-col>
     </a-row>
   </Main>
