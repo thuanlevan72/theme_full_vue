@@ -107,12 +107,12 @@ const onDistrictChange = () => {
 }
 
 .card-style {
-  border-radius: 10px;
+  border-radius: 0.8rem;
   margin: 20px;
+  background-color: #ffe4b5;
 }
 .row-style {
-  margin-top: 20px;
-  margin-right: 40px;
+  margin-top: 1.25rem;
 }
 
 .mxh-style {
@@ -125,6 +125,12 @@ const onDistrictChange = () => {
 .input-border {
   padding: 6px;
   border-radius: 2px;
+  max-width: 70%;
+}
+.input-border-sonha {
+  padding: 6px;
+  border-radius: 2px;
+  width: 80%;
 }
 
 .row-style-them {
@@ -141,20 +147,20 @@ const onDistrictChange = () => {
 
 <template>
   <a-card class="card-style">
-    <a-row :gutter="25" style="margin-bottom: 10px">
+    <a-row :gutter="25" style="margin-bottom: 0.3rem">
       <a-col :md="12" :xs="24" class="col-align-center">
         <unicon name="user-square"></unicon>
         <label for="" class="lablestyle-tt">Thông tin tài khoản</label>
       </a-col>
     </a-row>
-    <a-row :gutter="25" style="margin-bottom: 10px">
+    <a-row :gutter="25" style="margin-bottom: 2rem">
       <a-col :md="12" :sm="24" :xs="24">
         <avatar-upload />
       </a-col>
     </a-row>
-    <a-row :gutter="25" style="margin-bottom: 10px">
+    <a-row :gutter="25" style="margin-bottom: 0.625rem">
       <a-col :md="12" :xs="24">
-        <label for="" class="lablestyle">Tên đăng nhập</label>
+        <label for="" class="lablestyle">Tên đăng nhập</label> <br />
         <a-input placeholder="" class="input-border">
           <template v-slot:prefix>
             <unicon name="" width="0"></unicon>
@@ -162,25 +168,7 @@ const onDistrictChange = () => {
         </a-input>
       </a-col>
       <a-col :md="12" :xs="24">
-        <label for="" class="lablestyle">Họ tên</label>
-        <a-input placeholder="" class="input-border">
-          <template v-slot:prefix>
-            <unicon name="" width="0"></unicon>
-          </template>
-        </a-input>
-      </a-col>
-    </a-row>
-    <a-row :gutter="25" style="margin-bottom: 10px">
-      <a-col :md="12" :xs="24">
-        <label for="" class="lablestyle">Email</label>
-        <a-input placeholder="" class="input-border">
-          <template v-slot:prefix>
-            <unicon name="" width="0"></unicon>
-          </template>
-        </a-input>
-      </a-col>
-      <a-col :md="12" :xs="24">
-        <label for="" class="lablestyle">Số điện thoại</label>
+        <label for="" class="lablestyle">Họ tên</label><br />
         <a-input placeholder="" class="input-border">
           <template v-slot:prefix>
             <unicon name="" width="0"></unicon>
@@ -188,40 +176,64 @@ const onDistrictChange = () => {
         </a-input>
       </a-col>
     </a-row>
-    <a-row :gutter="25" style="margin-bottom: 10px">
+    <a-row :gutter="25" style="margin-bottom: 0.625rem">
+      <a-col :md="12" :xs="24">
+        <label for="" class="lablestyle">Email</label><br />
+        <a-input placeholder="" class="input-border">
+          <template v-slot:prefix>
+            <unicon name="" width="0"></unicon>
+          </template>
+        </a-input>
+      </a-col>
+      <a-col :md="12" :xs="24">
+        <label for="" class="lablestyle">Số điện thoại</label> <br />
+        <a-input placeholder="" class="input-border">
+          <template v-slot:prefix>
+            <unicon name="" width="0"></unicon>
+          </template>
+        </a-input>
+      </a-col>
+    </a-row>
+    <a-row :gutter="25" style="margin-bottom: 0.625rem">
       <a-col :md="12" :xs="24">
         <div :md="24" :xs="24" class="col-align-center">
           <unicon name="user-circle"></unicon>
           <label for="" class="lablestyle-tt">Thông tin cá nhân</label>
         </div>
-        <div :md="24" :xs="24" style="margin-top: 20px">
-          <label for="" class="lablestyle">Ngày sinh</label>
-          <DatePickerWrapper>
-            <a-date-picker
-              :default-value="dayjs('2023/01/01', dateFormat)"
-              :format="dateFormat"
-              style="margin-top: 1px; padding: 7px; border: 1px solid #d9d9d9 !important; border-radius: 2px"
-            />
-          </DatePickerWrapper>
-        </div>
-        <div :md="24" :xs="24" style="margin-top: 20px">
-          <label for="universities" class="lablestyle">Trường đại học</label>
-          <a-select v-model="selectedUniversity" style="width: 100%">
-            <a-select-option v-for="university in universities" :key="university.id" :value="university.id">
-              {{ university.name }}
-            </a-select-option>
-          </a-select>
-        </div>
-        <div :md="24" :xs="24" style="margin-top: 20px">
-          <label for="" class="lablestyle">Chuyên ngành</label>
-          <a-input placeholder="" class="input-border">
-            <template v-slot:prefix>
-              <unicon name="" width="0"></unicon>
-            </template>
-          </a-input>
-        </div>
-        <div :md="24" :xs="24" style="margin-top: 20px">
-          <label for="" class="lablestyle">Ngày sinh</label>
+        <a-row :gutter="25" style="margin-bottom: 0.3rem">
+          <a-col :md="12" :xs="24"> <label for="province" class="lablestyle">Ngày Sinh</label> </a-col>
+        </a-row>
+        <a-row :gutter="25" style="margin-bottom: 1.4rem">
+          <a-col :md="24" :xs="24">
+            <DatePickerWrapper>
+              <a-date-picker
+                :default-value="dayjs('2023/01/01', dateFormat)"
+                :format="dateFormat"
+                style="
+                  margin-top: 1px;
+                  padding: 7px;
+                  border: 1px solid #d9d9d9 !important;
+                  border-radius: 2px;
+                  width: 70%;
+                "
+              />
+            </DatePickerWrapper>
+          </a-col>
+        </a-row>
+        <a-row :gutter="25" style="margin-bottom: 0.3rem">
+          <a-col :md="12" :xs="24"> <label for="province" class="lablestyle">Trường đại học</label> </a-col>
+        </a-row>
+        <a-row :gutter="25" style="margin-bottom: 1.25rem">
+          <a-col :md="24" :xs="24">
+            <a-select v-model="selectedUniversity" style="width: 70%">
+              <a-select-option v-for="university in universities" :key="university.id" :value="university.id">
+                {{ university.name }}
+              </a-select-option>
+            </a-select>
+          </a-col>
+        </a-row>
+        <div :md="24" :xs="24" style="margin-top: 1.25rem">
+          <label for="" class="lablestyle">Chuyên ngành</label> <br />
           <a-input placeholder="" class="input-border">
             <template v-slot:prefix>
               <unicon name="" width="0"></unicon>
@@ -234,41 +246,49 @@ const onDistrictChange = () => {
           <unicon name="user-location"></unicon>
           <label for="" class="lablestyle-tt">Địa chỉ</label>
         </div>
-        <div :md="24" :xs="24" style="margin-top: 22px">
-          <label for="province" class="lablestyle">Tỉnh thành</label>
-          <a-select v-model="selectedProvince" @change="onProvinceChange" style="width: 100%">
-            <a-select-option v-for="province in provinces" :key="province.id" :value="province.id">
-              {{ province.name }}
-            </a-select-option>
-          </a-select>
-        </div>
-        <div :md="24" :xs="24" style="margin-top: 20px">
-          <label for="district" class="lablestyle">Quận/Huyện</label>
-          <a-select :xs="24" v-model="selectedDistrict" @change="onDistrictChange" style="width: 100%">
-            <a-select-option v-for="district in districts" :key="district.id" :value="district.id">
-              {{ district.name }}
-            </a-select-option>
-          </a-select>
-        </div>
-        <div :md="24" :xs="24" style="margin-top: 20px">
-          <label for="ward" class="lablestyle">Xã</label>
-          <a-select v-model="selectedWard" style="width: 100%">
-            <a-select-option v-for="ward in wards" :key="ward.id" :value="ward.id">
-              {{ ward.name }}
-            </a-select-option>
-          </a-select>
-        </div>
-        <div :md="24" :xs="24" style="margin-top: 20px">
-          <label for="" class="lablestyle">Số nhà</label>
-          <a-input placeholder="" class="input-border">
-            <template v-slot:prefix>
-              <unicon name="" width="0"></unicon>
-            </template>
-          </a-input>
-        </div>
+        <a-row :gutter="25" style="margin-bottom: 0.3rem">
+          <a-col :md="12" :xs="24"> <label for="province" class="lablestyle">Tỉnh thành</label> </a-col>
+          <a-col :md="12" :xs="24"> <label for="province" class="lablestyle">Quận/Huyện</label> </a-col>
+        </a-row>
+        <a-row :gutter="25" style="margin-bottom: 1.25rem">
+          <a-col :md="12" :xs="24">
+            <a-select v-model="selectedProvince" @change="onProvinceChange" style="width: 80%">
+              <a-select-option v-for="province in provinces" :key="province.id" :value="province.id">
+                {{ province.name }}
+              </a-select-option>
+            </a-select>
+          </a-col>
+          <a-col :md="12" :xs="24">
+            <a-select :xs="24" v-model="selectedDistrict" @change="onDistrictChange" style="width: 80%">
+              <a-select-option v-for="district in districts" :key="district.id" :value="district.id">
+                {{ district.name }}
+              </a-select-option>
+            </a-select>
+          </a-col>
+        </a-row>
+        <a-row :gutter="25" style="margin-bottom: 0.625rem">
+          <a-col :md="12" :xs="24"> <label for="province" class="lablestyle">Xã/Phường</label> </a-col>
+          <a-col :md="12" :xs="24"> <label for="province" class="lablestyle">Số nhà</label> </a-col>
+        </a-row>
+        <a-row :gutter="25" style="margin-bottom: 0.625rem">
+          <a-col :md="12" :xs="24">
+            <a-select v-model="selectedWard" style="width: 80%">
+              <a-select-option v-for="ward in wards" :key="ward.id" :value="ward.id">
+                {{ ward.name }}
+              </a-select-option>
+            </a-select>
+          </a-col>
+          <a-col :md="12" :xs="24">
+            <a-input placeholder="" class="input-border-sonha">
+              <template v-slot:prefix>
+                <unicon name="" width="0"></unicon>
+              </template>
+            </a-input>
+          </a-col>
+        </a-row>
       </a-col>
     </a-row>
-    <a-row :gutter="25" style="margin-bottom: 10px">
+    <a-row :gutter="25" style="margin-bottom: 0.625rem">
       <a-col :md="12" :xs="24">
         <label for="" class="lablestyle">Biết Lotus qua</label>
       </a-col>
@@ -283,15 +303,15 @@ const onDistrictChange = () => {
         <span class="mxh-style">Người giới thiệu</span>
       </a-col>
     </a-row>
-    <a-row :gutter="25" style="margin-bottom: 10px">
+    <a-row :gutter="25" style="margin-bottom: 0.625rem">
       <a-col :md="12" :xs="24" class="col-align-center">
         <unicon name="share-alt"></unicon>
         <label for="" class="lablestyle-tt">Mạng xã hội</label>
       </a-col>
     </a-row>
-    <a-row :gutter="25" style="margin-bottom: 10px">
+    <a-row :gutter="25" style="margin-bottom: 0.625rem">
       <a-col :md="8" :xs="24">
-        <label for="" class="lablestyle">Facebook</label>
+        <label for="" class="lablestyle">Facebook</label> <br />
         <a-input placeholder="" class="input-border">
           <template v-slot:prefix>
             <unicon name="facebook" width="30"></unicon>
@@ -299,7 +319,7 @@ const onDistrictChange = () => {
         </a-input>
       </a-col>
       <a-col :md="8" :xs="24">
-        <label for="" class="lablestyle">Skype</label>
+        <label for="" class="lablestyle">Skype</label> <br />
         <a-input placeholder="" class="input-border">
           <template v-slot:prefix>
             <unicon name="skype" width="30"></unicon>
@@ -307,7 +327,7 @@ const onDistrictChange = () => {
         </a-input>
       </a-col>
       <a-col :md="8" :xs="24">
-        <label for="" class="lablestyle">Zalo</label>
+        <label for="" class="lablestyle">Zalo</label> <br />
         <a-input placeholder="" class="input-border">
           <template v-slot:prefix>
             <unicon name="share-alt" width="30"></unicon>
@@ -431,7 +451,7 @@ const onDistrictChange = () => {
     size="default"
     shape="circle"
     type="secondary"
-    style="margin-left: 45%; margin-bottom: 20px; height: 40px; width: 150px"
+    style="margin-left: 45%; margin-bottom: 1.25rem; height: 2.5rem; width: 9.5rem"
   >
     Lưu Thay Đổi
   </sdButton>
