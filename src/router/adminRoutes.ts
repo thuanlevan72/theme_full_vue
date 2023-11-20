@@ -13,7 +13,7 @@ const routes = [
       {
         path: 'main',
         name: 'home',
-        component: () => import('@/views/dashboard/demoBangTin/DemoBangTin.vue'),
+        component: () => import('@/views/Mainlayout.vue'),
       },
       {
         path: '',
