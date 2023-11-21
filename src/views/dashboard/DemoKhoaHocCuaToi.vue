@@ -45,7 +45,7 @@ onMounted(() => {
         </a-row>
         <Main>
             <a-row :gutter="25" class="pt-20 d-block">
-                <a-col :xs="24" :span="24" class="infor-course mb-20" v-if="selectedButton === 'button1'"
+                <a-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" :span="24" class="infor-course mb-20" v-if="selectedButton === 'button1'"
                     v-for="(item, index) in filteredData('button1')" :key="index">
                     <div class="courses-card">
                         <img :src="item.imgs" alt="img-card" class="img-card">
@@ -66,7 +66,7 @@ onMounted(() => {
                     </div>
                 </a-col>
 
-                <a-col :xs="24" :span="24" class="infor-course mb-20" v-if="selectedButton === 'button2'"
+                <a-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" :span="24" class="infor-course mb-20" v-if="selectedButton === 'button2'"
                     v-for="(item, index) in filteredData('button2')" :key="index">
                     <div class="courses-card">
                         <img :src="item.imgs" alt="img-card" class="img-card">
@@ -117,7 +117,7 @@ onMounted(() => {
 .courses-card {
     display: flex;
     border: 0.5px solid rgb(212, 199, 199);
-    border-radius: 20px;
+    border-radius: 1.25rem;
     box-shadow: inset;
     background-color: #fff;
 }
@@ -128,48 +128,48 @@ onMounted(() => {
 }
 
 .courses-card h3 {
-    font-size: 22px;
-    margin-bottom: 8px;
+    font-size: 1.375rem;
+    margin-bottom: 0.5rem;
 }
 
 .courses-card .text-link {
-    font-size: 18px;
-    padding-left: 8px;
+    font-size: 1.125rem;
+    padding-left: 0.5rem;
     color: #1976D2;
 }
 
 .courses-card .text-number-of-subjects {
-    font-size: 16px;
+    font-size: 1rem;
     color: #686868;
 }
 .courses-card .text-number-of-subjects a {
-    font-size: 16px;
+    font-size: 1rem;
     color: #686868;
 }
 .mb-20 {
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 
 .p-15 {
-    padding: 15px;
+    padding: 1rem;
 }
 
 .pt-20 {
-    padding-top: 20px;
+    padding-top: 1.25rem;
 }
 
 .mt-10 {
-    margin-top: 10px;
+    margin-top: 0.625rem;
 }
 .mt-40 {
-    margin-top: 40px;
+    margin-top: 2.5rem;
 }
 .w-100{
     width: 100%;
 }
 .courses-name {
     color: #fff;
-    font-size: 26px;
+    font-size: 1.625rem;
 }
 
 .w-md-70-sd-100 {
@@ -177,7 +177,7 @@ onMounted(() => {
 }
 
 .primary {
-    border-bottom: 6px solid #ffffffB3;
+    border-bottom: 0.375rem solid #ffffffB3;
 }
 
 .default {
@@ -185,26 +185,26 @@ onMounted(() => {
 }
 
 .img-card {
-    height: 180px;
+    height: 11.25rem;
     width: 30%;
-    border-radius: 20px;
+    border-radius: 1.25rem;
 }
 
 .infor-course {
-    height: 180px;
-    max-width: 880px;
+    height: 11.25rem;
+    max-width: 55rem;
     display: block;
     margin: auto;
-    border-radius: 20px;
+    border-radius: 1.25rem;
 }
 
 .my-course .custom-link {
-    height: 48px;
-    border-bottom: 6px solid transparent;
+    height: 3rem;
+    border-bottom: 0.375rem solid transparent;
 }
 
 .my-course .custom-link:hover {
-    border-bottom: 6px solid #ffffffB3;
+    border-bottom: 0.375rem solid #ffffffB3;
 }
 
 .my-course .default[data-v-8e4e3970] {
@@ -216,13 +216,13 @@ onMounted(() => {
 .bWWCBR.bWWCBR:hover {
     color: #fff;
     background-color: #585F6A;
-    border-bottom: 6px solid #ffffffB3;
+    border-bottom: 0.375rem solid #ffffffB3;
 }
 
 .bWWCBR.bWWCBR:focus {
     color: #fff;
     background-color: #7A7F88;
-    border-bottom: 6px solid #ffffffB3;
+    border-bottom: 0.375rem solid #ffffffB3;
 }
 
 .bWWCBR.bWWCBR {
@@ -231,10 +231,10 @@ onMounted(() => {
     border-radius: 4px 4px 0 0;
 }
 .fiLpOL.fiLpOL {
-    height: 40px;
+    height: 2.5rem;
     background-image: linear-gradient(to right, #34b9e5, #0089dc)
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 48rem) {
     .courses-card {
         display: block;
     }
@@ -242,7 +242,7 @@ onMounted(() => {
     .img-card {
         height: auto;
         width: 100%;
-        border-radius: 20px;
+        border-radius: 1.25rem;
     }
 
     .infor-course {
@@ -252,8 +252,4 @@ onMounted(() => {
     .w-md-70-sd-100 {
         width: 100%;
     }
-
-    /* .f-md-right {
-        float: none;
-    } */
 }</style>
