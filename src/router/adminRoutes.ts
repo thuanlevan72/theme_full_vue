@@ -21,6 +21,11 @@ const routes = [
         component: () => import('@/views/dashboard/DemoBangTin.vue'),
       },
       {
+        path: '/congviec/nhomvieccuatoi',
+        name: 'demoNhomViec',
+        component: () => import('@/views/dashboard/DemoNhomViec.vue'),
+      },
+      {
         path: 'demo-one',
         name: 'demoOne',
         component: () => import('@/views/dashboard/DemoOne.vue'),
