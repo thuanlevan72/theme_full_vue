@@ -3,6 +3,7 @@ import Features from './FeaturesRoutes';
 import Pages from './PageRoutes';
 import Components from './Components';
 import App from './Applications';
+import UserRoutes from './UserRoutes';
 
 const routes = [
   {
@@ -18,7 +19,7 @@ const routes = [
       {
         path: '',
         name: 'demoBangTin',
-        component: () => import('@/views/dashboard/DemoBangTin.vue'),
+        component: () => import('@/views/dashboard/demoBangTin/DemoBangTin.vue'),
       },
       {
         path: 'demo-one',
@@ -70,6 +71,7 @@ const routes = [
     ],
   },
   ...studentRoutes,
+  ...UserRoutes,
   ...App,
   ...Features,
   ...Pages,
