@@ -17,7 +17,7 @@ export default [
       {
         name: 'thongtincanhan',
         path: 'thongtincanhan',
-        component: () => import('@/views/dashboard/DemoThongTinCaNhan.vue'),
+        component: () => import('../views/dashboard/DemoThongTinCaNhan.vue'),
       },
       {
         name: 'demoHocVienDiemDanh',
