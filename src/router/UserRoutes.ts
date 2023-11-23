@@ -10,7 +10,7 @@ export default [
         component: () => import('../views/table/QuanLyNguoiDungTable.vue'),
       },
       {
-        path: 'quanlytaikhoang',
+        path: 'quanlytaikhoan',
         name: 'quanlytaikhoang',
         component: () => import('../views/table/QuanLyTaiKhoangTable.vue'),
       },

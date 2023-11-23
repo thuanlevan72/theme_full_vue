@@ -2,6 +2,7 @@
 import { computed, onMounted, ref, nextTick } from 'vue';
 import { Main } from '../styled';
 import DataCourse from './Data';
+import FromEditTaiKhoang from '../forms/overview/FromEditTaiKhoang.vue';
 import DataAccount from './DataTaiKhoang';
 import DataTables from '@/components/table/QuanLyTaiKhoangTables.vue';
 import { BorderLessHeading } from '../styled';
@@ -41,6 +42,15 @@ const dataTableColumn = [
 ];
 
 const { state, dispatch } = useStore();
+const open = ref<boolean>(false);
+
+const showModal = () => {
+  open.value = true;
+};
+
+const handleOk = (e: MouseEvent) => {
+  open.value = false;
+};
 const isActive = ref(-1);
 const activeModule = (id: number) => {
   if (id === isActive.value) {
@@ -139,12 +149,20 @@ const tableDataUser = computed(() => {
       lockoutEnd: lockoutEnd ? formatDate(lockoutEnd) : '',
       action: (
         <div class="table-actions">
-          <router-link class="edit" to="#">
-            <unicon name="edit"></unicon>
-          </router-link>
-          <router-link class="delete" to="#">
-            <unicon name="trash"></unicon>
-          </router-link>
+          <a-popconfirm
+            title="Cho Mày cơ hội cuối cùng xóa hay không?"
+            ok-text="Xóa."
+            cancel-text="Thôi"
+            confirm="confirm"
+            cancel="cancel"
+          >
+            <a>
+              <unicon name="trash"></unicon>
+            </a>
+          </a-popconfirm>
+          <a>
+            <unicon onClick={showModal} name="edit"></unicon>
+          </a>
         </div>
       ),
     };
@@ -157,6 +175,16 @@ const tableDataUser = computed(() => {
     <sdPageHeader title="Quản lý người dùng" class="ninjadash-page-header-main" />
     <Main>
       <a-row :gutter="15">
+        <a-modal
+          v-model:visible="open"
+          title="Cập nhật"
+          @ok="handleOk"
+          :cancel-button-props="{ style: { display: 'none' } }"
+          :ok-button-props="{ style: { display: 'none' } }"
+          width="40rem"
+        >
+          <FromEditTaiKhoang />
+        </a-modal>
         <a-col :xs="24">
           <BorderLessHeading>
             <sdCards title="Danh sách tài khoảng">
