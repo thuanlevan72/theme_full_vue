@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { VerticalFormStyleWrap } from './Style';
 import { BasicFormWrapper } from '../../styled';
+const props = defineProps({
+  dataCurent: Object,
+  isEdit: Boolean,
+});
 </script>
 
 <template>
@@ -8,36 +12,36 @@ import { BasicFormWrapper } from '../../styled';
     <VerticalFormStyleWrap>
       <a-form name="ninjadash_vertical-form-with-icon" layout="vertical">
         <a-form-item label="Tên đăng nhập">
-          <a-input type="text" value="Thuanlevan72@gmail.com" placeholder="input placeholder">
+          <a-input type="text" :value="dataCurent?.userName || ''" placeholder="input placeholder">
             <template #prefix>
               <unicon name="user" width="14"></unicon>
             </template>
           </a-input>
         </a-form-item>
-        <a-form-item label="Tên đăng nhập">
-          <a-input type="password" value="@Anh123anh" placeholder="input placeholder">
+        <a-form-item label="Mật khẩu">
+          <a-input type="password" value="@àcvsgwt++1" placeholder="input placeholder">
             <template #prefix>
               <unicon name="user" width="14"></unicon>
             </template>
           </a-input>
         </a-form-item>
         <a-form-item label="Email">
-          <a-input type="email" name="email" value="username@email.com" placeholder="input placeholder">
+          <a-input type="email" name="email" :value="dataCurent?.email || ''" placeholder="input placeholder">
             <template #prefix>
               <unicon name="envelope" width="14"></unicon>
             </template>
           </a-input>
         </a-form-item>
 
-        <a-form-item label="Password">
-          <a-input-password name="password" value="12345678" placeholder="with input password">
+        <a-form-item label="Số điện thoại">
+          <a-input name="phone" :value="''" placeholder="with input password">
             <template #prefix>
               <unicon name="lock" width="14"></unicon>
             </template>
-          </a-input-password>
+          </a-input>
         </a-form-item>
         <a-form-item label="Multiple Select">
-          <a-select mode="multiple" :default-value="['HocVien', 'Admin']" placeholder="Please select">
+          <a-select mode="multiple" :value="dataCurent?.roles || []" placeholder="Please select">
             <a-select-option value="HocVien">Học Viên</a-select-option>
             <a-select-option value="Admin">Admin</a-select-option>
             <a-select-option value="Marketing">Marketing</a-select-option>

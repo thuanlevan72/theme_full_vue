@@ -43,8 +43,42 @@ const dataTableColumn = [
 
 const { state, dispatch } = useStore();
 const open = ref<boolean>(false);
-
-const showModal = () => {
+const isEdit = ref<boolean>(true);
+const dataCurent = ref<any>({
+  lockoutEnd: '',
+  twoFactorEnabled: false,
+  phoneNumberConfirmed: false,
+  emailConfirmed: false,
+  normalizedEmail: '',
+  email: '',
+  normalizedUserName: '',
+  userName: '',
+  id: '',
+  lockoutEnabled: true,
+  accessFailedCount: 0,
+  roles: [],
+});
+const showModal = (item: any, edit: boolean) => {
+  if (edit) {
+    isEdit.value = true;
+    dataCurent.value = { ...item };
+  } else {
+    isEdit.value = false;
+    dataCurent.value = {
+      lockoutEnd: '',
+      twoFactorEnabled: false,
+      phoneNumberConfirmed: false,
+      emailConfirmed: false,
+      normalizedEmail: '',
+      email: '',
+      normalizedUserName: '',
+      userName: '',
+      id: '',
+      lockoutEnabled: true,
+      accessFailedCount: 0,
+      roles: [],
+    };
+  }
   open.value = true;
 };
 
@@ -161,7 +195,7 @@ const tableDataUser = computed(() => {
             </a>
           </a-popconfirm>
           <a>
-            <unicon onClick={showModal} name="edit"></unicon>
+            <unicon onClick={() => showModal(item, true)} name="edit"></unicon>
           </a>
         </div>
       ),
@@ -177,18 +211,19 @@ const tableDataUser = computed(() => {
       <a-row :gutter="15">
         <a-modal
           v-model:visible="open"
-          title="Cập nhật"
+          :title="isEdit ? 'Cập nhật' : 'Tạo tài khoảng'"
           @ok="handleOk"
           :cancel-button-props="{ style: { display: 'none' } }"
           :ok-button-props="{ style: { display: 'none' } }"
           width="40rem"
         >
-          <FromEditTaiKhoang />
+          <FromEditTaiKhoang :isEdit="isEdit" :dataCurent="dataCurent" />
         </a-modal>
         <a-col :xs="24">
           <BorderLessHeading>
             <sdCards title="Danh sách tài khoảng">
               <DataTables
+                :onEvent="showModal"
                 :filterOption="true"
                 :filterOnchange="true"
                 :tableData="tableDataUser"

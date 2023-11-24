@@ -5,6 +5,7 @@ import { TableWrapper } from '../../views/styled';
 import { useStore } from 'vuex';
 import CreateHocVien from '@/views/dashboard/CreateHocVien.vue';
 const props = defineProps({
+  onEvent: Function,
   filterOption: Boolean,
   filterOnchange: Boolean,
   rowSelection: Boolean,
@@ -84,15 +85,23 @@ const rowSelections = computed(() => {
 
       <div v-else class="ninjadash-datatable-filter__left"></div>
 
-      <button class="button-18" role="button" @click="showModal">
+      <button class="button-18" role="button" @click="onEvent(null, false)">
         <font-awesome-icon
           class="super-crazy-colors"
           icon="fa-user-plus"
           :style="{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }"
         />
       </button>
+      <div class="ninjadash-datatable-filter__right" style="padding: 0 10px">
+        <a-select style="min-width: 100%" mode="multiple" :default-value="['HocVien']" placeholder="Vui lòng chọn">
+          <a-select-option value="HocVien">Học Viên</a-select-option>
+          <a-select-option value="Admin">Admin</a-select-option>
+          <a-select-option value="Marketing">Marketing</a-select-option>
+          <a-select-option value="TroGiang">Trợ Giảng</a-select-option>
+        </a-select>
+      </div>
       <div class="ninjadash-datatable-filter__right">
-        <a-input @change="handleDataUser" size="default" placeholder="Search">
+        <a-input @change="handleDataUser" size="default" placeholder="Tìm kiếm">
           <template #prefix>
             <unicon name="search"></unicon>
           </template>
@@ -150,9 +159,7 @@ const rowSelections = computed(() => {
   min-height: 40px;
   min-width: 0px;
   overflow: hidden;
-  padding: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 0 20px;
   text-align: center;
   touch-action: manipulation;
   margin: 0 10px;
