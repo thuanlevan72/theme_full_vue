@@ -26,6 +26,16 @@ const routes = [
         component: () => import('@/views/dashboard/DemoNhomViec.vue'),
       },
       {
+        path: '/congviec/cauhinh',
+        name: 'demoCauHinh',
+        component: () => import('@/views/dashboard/DemoCauHinh.vue'),
+      },
+      {
+        path: '/congviec/quanlynhomviec',
+        name: 'demoQuanLyNhomViec',
+        component: () => import('@/views/dashboard/DemoQuanLyNhomViec.vue'),
+      },
+      {
         path: 'demo-one',
         name: 'demoOne',
         component: () => import('@/views/dashboard/DemoOne.vue'),
