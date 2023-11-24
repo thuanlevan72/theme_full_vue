@@ -32,7 +32,7 @@ const pageRoutes = [
     <div class="Attendance-history">
         <Main>
             <a-row>
-                <a-col :xs="24">
+                <a-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
                     <sdCards title="Lịch sử điểm danh">
                         <a-row>
                             <div class="custom-card">
@@ -57,7 +57,6 @@ const pageRoutes = [
                                     <a-date-picker @change="onChange" class="padding-input-date" />
                                 </DatePickerWrapper>
                             </div>
-
                         </a-row>
                         <div class="table-attendance">
                             <SalesByLocation />
@@ -80,23 +79,27 @@ const pageRoutes = [
 .Attendance-history .ant-card-head {
     border-bottom: 0px;
 }
+.lmeiNC{
+    max-width: 71.25rem;
+    margin: auto;
+}
 .Attendance-history .lmeiNC{
-    padding-top: 20px;
+    padding-top: 1.25rem;
 }
 .Attendance-history .ant-row {
-    padding: 10px 0;
+    padding: 0.625rem 0;
 }
 
 .Attendance-history .custom-card {
-    margin-right: 20px;
+    margin-right: 1.25rem;
 }
 
 .Attendance-history .card-title {
-    margin-bottom: 5px;
+    margin-bottom: 0.3125rem;
 }
 
 .Attendance-history .padding-input-date {
-    padding: 7px;
+    padding: 0.4375rem;
 }
 
 .Attendance-history .lmeiNC .ant-picker {
@@ -108,10 +111,10 @@ const pageRoutes = [
 }
 
 .Attendance-history .custom-card .ant-select {
-    width: 180px;
+    width: 11.25rem;
 }
 .Attendance-history .custom-card .ant-picker {
-    min-width: 180px;
+    min-width: 11.25rem;
 }
 
 .Attendance-history .table-attendance .dXRjFB .ant-card-body {
@@ -128,10 +131,10 @@ const pageRoutes = [
 }
 
 .Attendance-history .table-attendance {
-    margin-top: 20px;
+    margin-top: 1.25rem;
 }
 .Attendance-history .ant-table-content{
-    height: 300px;
+    height: 18.75rem;
     overflow: auto;
     scrollbar-width: thin;
 }
@@ -146,13 +149,13 @@ const pageRoutes = [
     z-index: 1;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 37.5rem) {
     .Attendance-history .jWOmVG h1 {
-        font-size: 12px;
+        font-size: 0.75rem;
     }
 
     .Attendance-history .ant-table {
-        font-size: 12px;
+        font-size: 0.75rem;
     }
 
     .Attendance-history .cYeWcq .ant-table {
@@ -160,7 +163,7 @@ const pageRoutes = [
     }
 
     .Attendance-history .custom-card {
-        margin-bottom: 10px;
+        margin-bottom: 0.625rem;
     }
 
     .Attendance-history .card-title {
@@ -168,14 +171,14 @@ const pageRoutes = [
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 25rem) {
     .Attendance-history .custom-card .ant-select-selector {
-        width: 180px;
+        width: 11.25rem;
     }
 }
 
 .Attendance-history .pagination-style {
-    margin-top: 40px;
+    margin-top: 2.5rem;
     text-align: right;
 }
 </style>
