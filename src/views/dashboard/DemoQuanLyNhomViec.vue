@@ -114,9 +114,6 @@ const tableDataScource = computed(() =>
       tinhTrangViec: item.tinhTrangViec,
       action: (
         <div class="table-actions">
-          <router-link class="view" to={`#`}>
-            <unicon name="eye"></unicon>
-          </router-link>
           <router-link class="edit" to="#">
             <ModalCapNhatNhomViecVue />
           </router-link>

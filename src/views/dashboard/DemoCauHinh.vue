@@ -5,8 +5,12 @@ import { Main } from '../styled';
 import DataTables from '@/components/table/DataTable.vue';
 import { BorderLessHeading } from '../styled';
 import ModalXoaNhomViecVue from './ModalXoaNhomViec.vue';
-import ModalThemMoiNhomViecVue from './ModalThemMoiNhomViec.vue';
-import ModalCapNhatNhomViecVue from './ModalCapNhatNhomViec.vue';
+import ModalThemMoiTrangThai from './ModalThemMoiTrangThai.vue';
+import ModalThemMoiVaiTro from './ModalThemMoiVaiTro.vue';
+import ModalThemLoaiCongViec from './ModalThemLoaiCongViec.vue';
+import ModalCapNhatTrangThai from './ModalCapNhatTrangThai.vue';
+import ModalCapNhatVaiTro from './ModalCapNhatVaiTro.vue';
+import ModalCapNhatLoaiCongViec from './ModalCapNhatLoaiCongViec.vue';
 
 const trangThai = [
   {
@@ -75,11 +79,8 @@ const tableDataScourceTrangThai = computed(() =>
       tenTrangThai: item.tenTrangThai,
       action: (
         <div class="table-actions">
-          <router-link class="view" to={`#`}>
-            <unicon name="eye"></unicon>
-          </router-link>
           <router-link class="edit" to="#">
-            <ModalCapNhatNhomViecVue />
+            <ModalCapNhatTrangThai />
           </router-link>
           <router-link class="delete" to="#">
             <ModalXoaNhomViecVue />
@@ -95,11 +96,8 @@ const tableDataScourceVaiTro = computed(() =>
       tenVaiTro: item.tenVaiTro,
       action: (
         <div class="table-actions">
-          <router-link class="view" to={`#`}>
-            <unicon name="eye"></unicon>
-          </router-link>
           <router-link class="edit" to="#">
-            <ModalCapNhatNhomViecVue />
+            <ModalCapNhatVaiTro />
           </router-link>
           <router-link class="delete" to="#">
             <ModalXoaNhomViecVue />
@@ -115,11 +113,8 @@ const tableDataScourceLoaiCongViec = computed(() =>
       tenLoaiCongViec: item.tenLoaiCongViec,
       action: (
         <div class="table-actions">
-          <router-link class="view" to={`#`}>
-            <unicon name="eye"></unicon>
-          </router-link>
           <router-link class="edit" to="#">
-            <ModalCapNhatNhomViecVue />
+            <ModalCapNhatLoaiCongViec />
           </router-link>
           <router-link class="delete" to="#">
             <ModalXoaNhomViecVue />
@@ -139,7 +134,7 @@ const tableDataScourceLoaiCongViec = computed(() =>
           <a-col :xs="24" class="fix-cau-hinh">
             <BorderLessHeading>
               <sdCards title="Quản lý trạng thái">
-                <ModalThemMoiNhomViecVue />
+                <ModalThemMoiTrangThai />
                 <DataTables
                   :filterOption="true"
                   :filterOnchange="true"
@@ -158,7 +153,7 @@ const tableDataScourceLoaiCongViec = computed(() =>
           <a-col :xs="24" class="fix-cau-hinh">
             <BorderLessHeading>
               <sdCards title="Quản lý vai trò">
-                <ModalThemMoiNhomViecVue />
+                <ModalThemMoiVaiTro />
                 <DataTables
                   :filterOption="true"
                   :filterOnchange="true"
@@ -177,7 +172,7 @@ const tableDataScourceLoaiCongViec = computed(() =>
           <a-col :xs="24" class="fix-cau-hinh">
             <BorderLessHeading>
               <sdCards title="Quản lý loại công việc">
-                <ModalThemMoiNhomViecVue />
+                <ModalThemLoaiCongViec />
                 <DataTables
                   :filterOption="true"
                   :filterOnchange="true"
