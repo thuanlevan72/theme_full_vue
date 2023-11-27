@@ -12,8 +12,9 @@ const props = defineProps({
   columns: Array,
 });
 const open = ref<boolean>(false);
-
+const emit = defineEmits(['showModal']);
 const showModal = () => {
+  emit('showModal');
   open.value = true;
 };
 

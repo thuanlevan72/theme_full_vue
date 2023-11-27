@@ -375,6 +375,7 @@ const SelectRadioStyle = Styled.div`
 
 const TimeLinePointerIconWrap = Styled.div`
   padding: 20px;
+  margin: 1rem  0 0 0;
   .ant-timeline-item-last > .ant-timeline-item-tail{
     display: block;
   }
@@ -426,8 +427,8 @@ const TimeLinePointerIconWrap = Styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 40px;
-      width: 40px;
+      height: 1rem;
+      width: 1rem;
       border-radius: 50%;
       &:after,
       &:before{
@@ -469,6 +470,7 @@ const TimeLinePointerIconWrap = Styled.div`
 `;
 
 const TimelineNormalWrap = Styled.div`
+  padding: 20px;
   .ant-timeline-item-last > .ant-timeline-item-content{
     min-height: auto;
   }
@@ -502,7 +504,7 @@ const TimelineNormalWrap = Styled.div`
     .ant-timeline-item-content{
       margin: ${({ theme }) => (theme.rtl ? '0 32px 0 0' : '0 0 0 32px')};
       font-size: 14px !important;
-			color: ${({theme}) => theme[theme.mainContent]['dark-text']};
+			color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
       .timeline-content-inner{
         .timeline-content-time{
           min-width: 65px;
@@ -516,7 +518,7 @@ const TimelineNormalWrap = Styled.div`
     }
     .ant-timeline-item-head-custom{
       padding: 0px 1px;
-			background: ${({theme}) => theme[theme.mainContent]['darker-background2']};
+			background: ${({ theme }) => theme[theme.mainContent]['darker-background2']};
     }
   }
 `;
@@ -601,7 +603,7 @@ const CheckboxGroupStyle = Styled.div`
 const DashboardBaseStyleWrap = Styled.div`
     h1{
         margin-bottom: 30px;
-        color: ${({theme}) => theme[theme.mainContent]['dark-text']};
+        color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
     }
     .ant-row{
         margin: -5px 0;

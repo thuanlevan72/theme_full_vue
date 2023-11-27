@@ -157,12 +157,12 @@ export default [
       {
         path: 'antdIcons',
         name: 'antdIcons',
-        component: () => import('@/views/icons/AntdIcons.vue'),
+        component: () => import('../views/icons/AntdIcons.vue'),
       },
       {
         path: 'fa',
         name: 'fa',
-        component: () => import('@/views/icons/FaIcons.vue'),
+        component: () => import('../views/icons/FaIcons.vue'),
       },
     ],
   },

@@ -21,8 +21,8 @@ const dataTableColumn = [
   },
   {
     title: 'STD',
-    dataIndex: 'phoneNumberConfirmed',
-    key: 'phoneNumberConfirmed',
+    dataIndex: 'phoneNumber',
+    key: 'phoneNumber',
   },
   {
     title: 'Quyền',
@@ -47,7 +47,7 @@ const isEdit = ref<boolean>(true);
 const dataCurent = ref<any>({
   lockoutEnd: '',
   twoFactorEnabled: false,
-  phoneNumberConfirmed: false,
+  phoneNumber: '',
   emailConfirmed: false,
   normalizedEmail: '',
   email: '',
@@ -160,6 +160,7 @@ const tableDataUser = computed(() => {
       phoneNumberConfirmed,
       emailConfirmed,
       normalizedEmail,
+      phoneNumber,
       email,
       normalizedUserName,
       userName,
@@ -172,7 +173,7 @@ const tableDataUser = computed(() => {
     return {
       userName,
       email,
-      phoneNumberConfirmed,
+      phoneNumber,
       roles: (
         <div class="row-course">
           {roles.map((itemCourse: any) => {

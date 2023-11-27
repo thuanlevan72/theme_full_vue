@@ -42,7 +42,7 @@ export default [
       {
         path: 'button',
         name: 'button',
-        component: () => import('@/views/uiElements/Button.vue'),
+        component: () => import('../views/uiElements/Button.vue'),
       },
       {
         path: 'checkbox',
@@ -152,7 +152,7 @@ export default [
       {
         path: 'popover',
         name: 'popover',
-        component: () => import('@/views/uiElements/Popover.vue'),
+        component: () => import('../views/uiElements/Popover.vue'),
       },
       {
         path: 'progressbar',
@@ -222,7 +222,7 @@ export default [
       {
         path: 'timeline',
         name: 'timelines',
-        component: () => import('@/views/uiElements/Timeline.vue'),
+        component: () => import('../views/uiElements/Timeline.vue'),
       },
       {
         path: 'time-picker',

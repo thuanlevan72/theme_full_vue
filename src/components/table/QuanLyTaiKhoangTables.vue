@@ -14,10 +14,6 @@ const props = defineProps({
 });
 const open = ref<boolean>(false);
 
-const showModal = () => {
-  open.value = true;
-};
-
 const handleOk = (e: MouseEvent) => {
   open.value = false;
 };

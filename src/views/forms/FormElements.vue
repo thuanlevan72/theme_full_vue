@@ -29,7 +29,7 @@ const headers = {
     <sdPageHeader title="Form Elements" class="ninjadash-page-header-main"> </sdPageHeader>
     <Main>
       <a-row :gutter="25">
-        <a-col :xs="24">
+        <a-col :xsz="24">
           <GridForm />
         </a-col>
         <a-col :lg="12" :xs="24">

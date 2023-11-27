@@ -3,15 +3,120 @@
 import { DatePickerWrapper } from '../styled';
 import dayjs from 'dayjs';
 import AvatarUpload from '../uiElements/upload/Avatar.vue';
-
+import { TimeLinePointerIconWrap, TimelineNormalWrap } from '../uiElements/ui-elements-styled';
+import { themeColor } from '../../config/theme/themeVariables';
 const dateFormat = 'YYYY/MM/DD';
+import { ref } from 'vue';
+const openCreateCourses = ref<boolean>(false);
+const openCreateStatus = ref<boolean>(false);
+const visible = ref<boolean>(false);
+const handleCreateCourses = (e: MouseEvent) => {
+  openCreateCourses.value = false;
+};
+const showCreateCourses = () => {
+  openCreateCourses.value = true;
+};
+const handleCreateStatus = (e: MouseEvent) => {
+  openCreateStatus.value = false;
+};
+const showCreateStatus = () => {
+  openCreateStatus.value = true;
+};
+const hide = () => {
+  visible.value = false;
+};
+
 // const monthFormat = 'YYYY/MM';
 // const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY'];
 const onChange = (date: any, dateString: any) => {
   console.log(date, dateString);
 };
+const formatDate = (dateString: string) => {
+  var date = new Date(dateString);
 
-import { ref } from 'vue';
+  var day = date.getDate();
+  var month = date.getMonth() + 1; // JavaScript months are 0-11
+  var year = date.getFullYear();
+
+  // pad with a zero if single digit
+  if (day < 10) {
+    day = '0' + day;
+  }
+  if (month < 10) {
+    month = '0' + month;
+  }
+
+  return day + '/' + month + '/' + year;
+};
+const dataCourse = [
+  {
+    id: 4125,
+    hocVienId: 4147,
+    trungTamId: 1,
+    khoaHocId: 32,
+    ngayDangKy: '2023-10-26T13:51:25.3772998',
+    monHienTaiId: 40,
+    hocXong: false,
+    tenKhoa: 'VueJS',
+    anhDaiDien: 'c7pkdvpm4ibuat1wehta',
+    kyHieu: 'VUE',
+    dongHocPhi: false,
+    isActive: true,
+    tenKhoaHoc: 'VueJS',
+    giaGoiChuongTrinh: 0,
+    laChinhThuc: false,
+    tyLeHoanThanh: 0,
+    soMonHoc: 4,
+    trungTam: {
+      id: 1,
+      tenTrungTam: 'Lotus Academy',
+      diaChi: 'Tầng 17 tòa MHDI 68 Nguyễn Cơ Thạch',
+      soDienThoai: '0987296350',
+      moTaNganhNghe: 'Education',
+      linkAnhDaiDien: 'zclacqlwunt8w7quflxr',
+      gioiThieu:
+        'Tiền thân là một nhóm lập trình của HVKTQS được thành lập năm 2004 bởi một số sinh viên tham dự đội tuyển Olympic Tin Học, được dẫn đầu bởi Mr.Khánh – CEO hiện nay của HVIT CLAN.\n\nBan đầu, nhóm hoạt động dưới hình thức diễn đàn lập trình, đặt tên là HVIT(Học Viện IT) với mục đích quy tụ những tài năng trẻ lập trình viên, tạo ra sân chơi lập trình cho sinh viên các trường kỹ thuật, cùng giúp nhau tiến bộ.Sau vài tháng thì những thành viên sáng lập ban đầu rời đi theo những con đường riêng, chỉ còn lại người chủ trì cố gắng duy trì hoạt động.\n\nMr.Khánh do không có người hỗ trợ và lượng thành viên có nhu cầu học hỏi khá nhiều, nên đã thử mở các lớp lập trình cho chính những người bạn đồng trang lứa theo học.Và cũng khá bất ngờ, nghiệp dạy lập trình của Khánh bắt đầu từ đây với đông đảo lượng sinh viên  theo học sau đó.\n\nGần một năm liên tục trau dồi trực tiếp với những lớp lập trình nhỏ từ 6-8 người, kỹ năng dậy của Khánh đã trở nên tốt hơn, khả năng trình bày và truyền tải vấn đề một cách dễ hiểu nhất cho các bạn sinh viên ngày một hoàn thiện, đồng thời cũng nhận được rất nhiều ủng hộ từ gia đình và bạn bè, thậm chí còn được mời đứng lớp hỗ trợ cho nhiều giảng viên đại học.\n\nTừ tiền đề đó, giữa năm 2006, Mr.Khánh quyết định mở một nhánh riêng trong sự nghiệp CNTT của mình, thành lập nên “HVIT CLAN – IT Cho Sinh Viên” nhóm chuyên đào tạo lập trình viên để tạo nguồn lực cung cấp trực tiếp cho nhu cầu gia công phần mềm đang lên cao.\n\nHoạt động liên tục sau hơn 12 năm, đến nay HVIT CLAN đã đạt được thành tựu rực rỡ:\n\nĐào tạo gần 3000 SV các trường ĐH\nTạo ra hơn 50 nhóm lập trình\nCó 5 học viên trở thành tiến sĩ, nghiên cứu sinh đang sống ở Tây Âu và Nhật\nHàng chục học viên là Thạc Sĩ và nghiên cứu sinh trong nước\nCó 10 học viên đang đảm nhiệm giám đốc, phó giám đốc các doanh nghiệp\nHơn 500 mức project manager, project lead\nHơn  800  developer lead, test lead với mức lương rất cao\nHơn 1500 developer, test, qa, designer, ba với mức lương cao\n \nCho đến cuối năm 2019, sau một thời gian dài hoạt động đào tạo người để triển khai gia công phần mềm, HVIT CLAN chính thức đi vào con đường đào tạo lập trình viên chuyện nghiệp bằng việc hệ thống và số hóa lại chương trình học được tích lũy suốt từ năm 2006 đến nay.',
+      linkFaceBook: 'https://www.facebook.com/LotusDeveloperAcademy',
+      linkWebsite: 'http://lotusacademy.edu.vn/',
+      tongSoHocVien: 0,
+    },
+  },
+  {
+    id: 4126,
+    hocVienId: 4147,
+    trungTamId: 1,
+    khoaHocId: 19,
+    ngayDangKy: '2023-10-26T13:56:10.588653',
+    monHienTaiId: 38,
+    hocXong: false,
+    tenKhoa: 'Frontend Developer VueJS',
+    anhDaiDien: 'dsr4a3crzh8om41wbvuz',
+    kyHieu: 'FD',
+    dongHocPhi: false,
+    isActive: true,
+    tenKhoaHoc: 'Frontend Developer VueJS',
+    linkAnhMinhHoaKhoaHoc: '3elb4jusywv53arzn32j',
+    giaGoiChuongTrinh: 0,
+    laChinhThuc: false,
+    tyLeHoanThanh: 0,
+    soMonHoc: 7,
+    trungTam: {
+      id: 1,
+      tenTrungTam: 'Lotus Academy',
+      diaChi: 'Tầng 17 tòa MHDI 68 Nguyễn Cơ Thạch',
+      soDienThoai: '0987296350',
+      moTaNganhNghe: 'Education',
+      linkAnhDaiDien: 'zclacqlwunt8w7quflxr',
+      gioiThieu:
+        'Tiền thân là một nhóm lập trình của HVKTQS được thành lập năm 2004 bởi một số sinh viên tham dự đội tuyển Olympic Tin Học, được dẫn đầu bởi Mr.Khánh – CEO hiện nay của HVIT CLAN.\n\nBan đầu, nhóm hoạt động dưới hình thức diễn đàn lập trình, đặt tên là HVIT(Học Viện IT) với mục đích quy tụ những tài năng trẻ lập trình viên, tạo ra sân chơi lập trình cho sinh viên các trường kỹ thuật, cùng giúp nhau tiến bộ.Sau vài tháng thì những thành viên sáng lập ban đầu rời đi theo những con đường riêng, chỉ còn lại người chủ trì cố gắng duy trì hoạt động.\n\nMr.Khánh do không có người hỗ trợ và lượng thành viên có nhu cầu học hỏi khá nhiều, nên đã thử mở các lớp lập trình cho chính những người bạn đồng trang lứa theo học.Và cũng khá bất ngờ, nghiệp dạy lập trình của Khánh bắt đầu từ đây với đông đảo lượng sinh viên  theo học sau đó.\n\nGần một năm liên tục trau dồi trực tiếp với những lớp lập trình nhỏ từ 6-8 người, kỹ năng dậy của Khánh đã trở nên tốt hơn, khả năng trình bày và truyền tải vấn đề một cách dễ hiểu nhất cho các bạn sinh viên ngày một hoàn thiện, đồng thời cũng nhận được rất nhiều ủng hộ từ gia đình và bạn bè, thậm chí còn được mời đứng lớp hỗ trợ cho nhiều giảng viên đại học.\n\nTừ tiền đề đó, giữa năm 2006, Mr.Khánh quyết định mở một nhánh riêng trong sự nghiệp CNTT của mình, thành lập nên “HVIT CLAN – IT Cho Sinh Viên” nhóm chuyên đào tạo lập trình viên để tạo nguồn lực cung cấp trực tiếp cho nhu cầu gia công phần mềm đang lên cao.\n\nHoạt động liên tục sau hơn 12 năm, đến nay HVIT CLAN đã đạt được thành tựu rực rỡ:\n\nĐào tạo gần 3000 SV các trường ĐH\nTạo ra hơn 50 nhóm lập trình\nCó 5 học viên trở thành tiến sĩ, nghiên cứu sinh đang sống ở Tây Âu và Nhật\nHàng chục học viên là Thạc Sĩ và nghiên cứu sinh trong nước\nCó 10 học viên đang đảm nhiệm giám đốc, phó giám đốc các doanh nghiệp\nHơn 500 mức project manager, project lead\nHơn  800  developer lead, test lead với mức lương rất cao\nHơn 1500 developer, test, qa, designer, ba với mức lương cao\n \nCho đến cuối năm 2019, sau một thời gian dài hoạt động đào tạo người để triển khai gia công phần mềm, HVIT CLAN chính thức đi vào con đường đào tạo lập trình viên chuyện nghiệp bằng việc hệ thống và số hóa lại chương trình học được tích lũy suốt từ năm 2006 đến nay.',
+      linkFaceBook: 'https://www.facebook.com/LotusDeveloperAcademy',
+      linkWebsite: 'http://lotusacademy.edu.vn/',
+      tongSoHocVien: 0,
+    },
+  },
+];
+import FormSelectCreateCourses from '../table/FormSelectCreateCourses.vue';
+import FormSelectStatus from '../table/FormSelectStatus.vue';
 
 interface Province {
   id: number;
@@ -427,29 +532,140 @@ const onDistrictChange = () => {
       </a-col>
     </a-row>
   </a-card>
+  <a-modal
+    v-model:visible="openCreateCourses"
+    title="Đăng ký khóa học"
+    @ok="handleCreateCourses"
+    :cancel-button-props="{ style: { display: 'none' } }"
+    :ok-button-props="{ style: { display: 'none' } }"
+    width="55rem"
+  >
+    <FormSelectCreateCourses />
+  </a-modal>
+  <a-modal
+    v-model:visible="openCreateStatus"
+    title="Thêm tài khoảng"
+    @ok="handleCreateStatus"
+    :cancel-button-props="{ style: { display: 'none' } }"
+    :ok-button-props="{ style: { display: 'none' } }"
+    width="55rem"
+  >
+    <FormSelectStatus />
+  </a-modal>
   <a-card class="card-style" style="border: none">
     <a-row :gutter="25" class="gap-flex-row">
       <a-col :md="11" :xs="24" class="col-aligns bordered-col">
-        <label for="" class="lablestyle-tt">Danh sách khóa học</label>
-        <button class="button-18" role="button">
-          Thêm Mới &nbsp;
-          <font-awesome-icon
-            class="super-crazy-colors"
-            icon="fa-plus"
-            :style="{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }"
-          />
-        </button>
+        <v-row>
+          <a-col :span="24" class="flex-space-between">
+            <label for="" class="lablestyle-tt">Danh sách khóa học</label>
+            <button class="button-18" role="button" @click="showCreateCourses">
+              Thêm Mới &nbsp;
+              <font-awesome-icon
+                class="super-crazy-colors"
+                icon="fa-plus"
+                :style="{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }"
+              /></button
+          ></a-col>
+          <a-col :span="24">
+            <TimelineNormalWrap>
+              <a-timeline>
+                <a-timeline-item v-for="item in dataCourse">
+                  <h3 style="display: flex; justify-content: space-between">
+                    {{ item.tenKhoaHoc }}
+                    <sdPopover placement="bottomRight" action="click">
+                      <template v-slot:content>
+                        <ul>
+                          <li>
+                            <a to="#"> chỉnh sửa </a>
+                          </li>
+                          <li>
+                            <a to="#"
+                              ><a-popconfirm
+                                class="pop-confirm"
+                                title="bạn có chắc chắn xóa khóa học này không?"
+                                ok-text="Xóa."
+                                cancel-text="Thôi"
+                                confirm="confirm"
+                                cancel="cancel"
+                              >
+                                Xóa
+                              </a-popconfirm></a
+                            >
+                          </li>
+                        </ul>
+                      </template>
+                      <a to="#" class="ninjadash-nav-action-link"
+                        ><font-awesome-icon
+                          class="super-crazy-colors"
+                          icon="fa-ellipsis"
+                          :style="{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }"
+                      /></a>
+                    </sdPopover>
+                  </h3>
+                  <h4>Ngày đăng ký: {{ formatDate(item.ngayDangKy) }}</h4>
+                  <p>Gói học phí: KXĐ.</p>
+                  <p>Chưa chính thức - Offline.</p>
+                  <span class="tags" style="color: blue; font-weight: 700"> Đã active</span>
+                </a-timeline-item>
+              </a-timeline>
+            </TimelineNormalWrap>
+          </a-col>
+        </v-row>
       </a-col>
       <a-col :md="11" :xs="24" class="col-aligns bordered-col">
-        <label for="" class="lablestyle-tt">Danh sách trạng thái</label>
-        <button class="button-18" role="button">
-          Thêm mới &nbsp;
-          <font-awesome-icon
-            class="super-crazy-colors"
-            icon="fa-plus"
-            :style="{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }"
-          />
-        </button>
+        <v-row>
+          <a-col :span="24" class="flex-space-between">
+            <label for="" class="lablestyle-tt">Danh sách trạng thái</label>
+            <button class="button-18" role="button" @click="showCreateStatus">
+              Thêm mới &nbsp;
+              <font-awesome-icon
+                class="super-crazy-colors"
+                icon="fa-plus"
+                :style="{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }"
+              /></button
+          ></a-col>
+          <a-col :span="24">
+            <TimelineNormalWrap>
+              <a-timeline>
+                <a-timeline-item>
+                  <h3 style="display: flex; justify-content: space-between">
+                    Sign up Facebook / Google
+                    <sdPopover placement="bottomRight" action="click">
+                      <template v-slot:content>
+                        <ul>
+                          <li>
+                            <a to="#">Sửa</a>
+                          </li>
+                          <li>
+                            <a to="#">
+                              <a-popconfirm
+                                class="pop-confirm"
+                                title="bạn có chắc chắn xóa trạng thái này không?"
+                                ok-text="Xóa."
+                                cancel-text="Thôi"
+                                confirm="confirm"
+                                cancel="cancel"
+                              >
+                                Xóa
+                              </a-popconfirm></a
+                            >
+                          </li>
+                        </ul>
+                      </template>
+                      <a to="#" class="ninjadash-nav-action-link"
+                        ><font-awesome-icon
+                          class="super-crazy-colors"
+                          icon="fa-ellipsis"
+                          :style="{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }"
+                      /></a>
+                    </sdPopover>
+                  </h3>
+                  <h4>26/10/2023</h4>
+                </a-timeline-item>
+              </a-timeline>
+            </TimelineNormalWrap>
+          </a-col>
+        </v-row>
       </a-col>
     </a-row>
   </a-card>
@@ -463,6 +679,15 @@ const onDistrictChange = () => {
   </sdButton>
 </template>
 <style scoped>
+.pop-confirm {
+  padding: 0;
+}
+.lnSaax .ant-timeline-item .ant-timeline-item-head {
+  height: 10px !important;
+  width: 1rem;
+}
+.flex-space-between {
+}
 .gap-flex-row {
   justify-content: space-around;
 }
