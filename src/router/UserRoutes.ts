@@ -10,6 +10,11 @@ export default [
         component: () => import('../views/table/QuanLyNguoiDungTable.vue'),
       },
       {
+        path: '/giamsat/phanconghocvien',
+        name: 'PhanCongHocVien',
+        component: () => import('@/views/dashboard/DemoPhanCongHocVien.vue'),
+      },
+      {
         path: 'quanlytaikhoang',
         name: 'quanlytaikhoang',
         component: () => import('../views/table/QuanLyTaiKhoangTable.vue'),
