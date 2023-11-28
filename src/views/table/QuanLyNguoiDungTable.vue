@@ -1,5 +1,5 @@
 <script setup lang="tsx">
-import { computed, onMounted, ref, nextTick } from 'vue';
+import { computed, onMounted, ref, nextTick, reactive } from 'vue';
 import { Main } from '../styled';
 import DataCourse from './Data';
 import FormSelectEvaluate from './FormSelectEvaluate.vue';
@@ -61,6 +61,12 @@ const open = ref<boolean>(false);
 const openEvaluate = ref<boolean>(false);
 const openAssignment = ref<boolean>(false);
 const isActive = ref(-1);
+const popoverVisibility = reactive({});
+
+const togglePopover = (id: number) => {
+  popoverVisibility[id] = !popoverVisibility[id];
+};
+
 const showModal = () => {
   open.value = true;
 };
@@ -170,10 +176,17 @@ const tableDataUser = computed(() => {
               <sdPopover
                 placement="rightTop"
                 action="click"
+                visible={popoverVisibility[item.id]}
+                onVisibleChange={() => togglePopover(item.id)}
                 v-slots={{
                   content: () => (
                     <>
-                      <a onClick={showModal}>
+                      <a
+                        onClick={() => {
+                          showModal();
+                          togglePopover(item.id);
+                        }}
+                      >
                         <font-awesome-icon
                           icon={faEdit}
                           size="lg"
@@ -205,7 +218,12 @@ const tableDataUser = computed(() => {
                         />
                         <span>Giám sát học tập</span>
                       </a>
-                      <a onClick={showAssignment}>
+                      <a
+                        onClick={() => {
+                          showAssignment();
+                          togglePopover(item.id);
+                        }}
+                      >
                         <font-awesome-icon
                           icon={faUserGroup}
                           size="lg"
@@ -229,7 +247,12 @@ const tableDataUser = computed(() => {
                           <span>Tạo chatbot</span>
                         </a-popconfirm>
                       </a>
-                      <a onClick={showEvaluate}>
+                      <a
+                        onClick={() => {
+                          showEvaluate();
+                          togglePopover(item.id);
+                        }}
+                      >
                         <font-awesome-icon
                           icon={faMessage}
                           size="lg"
